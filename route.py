@@ -37,11 +37,11 @@ def getScore(id):
                 if i=='colspan':break
             every_score=[]
             try:
-                term =  re.search('>.+<',i).group()[6:-1]
+                term =  re.search('>.*<',i).group()[6:-1]
             except Exception,e:
                 pass
         else :
-            title,grade,score,Null = re.findall('(?<=\>).+(?=<)',i)
+            title,grade,score,Null = re.findall('(?<=\>).*(?=<)',i)
             item = {'title':title,'grade':grade,'score':score}
             every_score.append(item)
     js = {'name':name,'college':college,'major':major,'class':_class,'id':id,'detail':detail}
