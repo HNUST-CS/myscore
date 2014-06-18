@@ -1,10 +1,16 @@
 from scrapy import selector
 import urllib2,re,json
 from collections import OrderedDict
+
+
+
 def getScore(id):
     id=str(id)
-    if id[2]=='5': url = 'http://211.67.208.67/xxjw/xscjcx.jsp?yzbh='
-    else: url = 'http://211.67.208.69/kdjw/xscjcx.jsp?yzbh='
+    # if id[2]=='5': url = 'http://211.67.208.67/xxjw/xscjcx.jsp?yzbh='
+    # else: url = 'http://211.67.208.69/kdjw/xscjcx.jsp?yzbh='
+
+    if id[2]=='5': url = 'http://127.0.0.1:2222/xxjw/xscjcx.jsp?yzbh='
+    else: url = 'http://127.0.0.1:2222/kdjw/xscjcx.jsp?yzbh='
     try:
         html=urllib2.urlopen(url+str(id)).read()
         if html<100 : return "{'error':true}"
