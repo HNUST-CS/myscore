@@ -21,6 +21,17 @@
 	    <!--[if lte IE 7]>
 	    <link rel="stylesheet" type="text/css" href="css/ie.css">
 	    <![endif]-->
+	    <script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "//hm.baidu.com/hm.js?9c39dddbff20ccfa0fdb3e3c05eed8ea";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+		</script>
+
+
 
 	</head>
 
@@ -36,13 +47,13 @@
 	      <span class="icon-bar"></span>
 	      <span class="icon-bar"></span>
 	    </button>
-	    <a class="navbar-brand" href="#">myScore</a>
+	    <a class="navbar-brand" href="index.html">myScore</a>
 	  </div>
 
 	  <!-- Collect the nav links, forms, and other content for toggling -->
 	  <div class="collapse navbar-collapse" id="collapse-1">
 	    <ul class="nav navbar-nav navbar-right">
-	      <li><a href="#">contact us</a></li>
+	      <li><a target="_blank" href="http://git.oschina.net/jailbreak/myscore">view on oschina</a></li>
 	    </ul>
 	  </div><!-- /.navbar-collapse -->
 	  </div>
@@ -89,7 +100,7 @@
 			<div class="btn-group">
 				
 			</div>
-			<botton class="pull-right btn btn-warning">查看全班成绩</botton>
+			<botton  data-toggle="modal" data-target="#idcomfirm" class="pull-right btn btn-warning">查看全班成绩</botton></a>
 			<table  class="score-table table table-striped table-hover table-bordered">
 				<tbody id="p-score">
 				<tr>
@@ -103,3 +114,25 @@
 	</div>
 	</body>
 </html>
+
+<div class="modal fade" id="idcomfirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">请输入您的身份证号码</h4>
+      </div>
+      <div class="modal-body">
+      	<div class="form-group">
+      		<div class="col-xs-8 col-xs-offset-2">
+        	<input class="form-control" placeholder="身份证号码" type="text"/>
+        	</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button id="id-confirm-btn" type="button" class="btn btn-primary">确定</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

@@ -8,17 +8,29 @@
     var fail, js, settleFile;
     js = '';
     fail = function() {
-      return $('#p-msg').find('tr');
+      return $('#p-score').find('tr').each(function() {
+        var content, score;
+        content = $(this).find('td').eq(2);
+        score = parseInt($(this).find('td').eq(2).text());
+        if (score < 60) {
+          return content.addClass('danger');
+        }
+      });
     };
-    settleFile = function(js) {
-      var cnt, i, j, msg, se, semester, t, _ref;
+    settleFile = function(js, id) {
+      var cnt, i, msg, msg_content, se, semester, t, _ref;
       t = 0;
       cnt = 0;
+      $('#id-confirm-btn').attr('data-id', id);
       $('#p-score').append("<tr class='0 1 2 3 4 5 6 7 8'> <th>课程</th> <th>学分</th> <th>成绩</th> </tr>");
       for (i in js) {
-        j = js[i];
-        console.log(i, j);
-        $('#p-msg').find('tr').eq(1).find('td').eq(t++).text(j);
+        console.log(i);
+        msg_content = $('#p-msg').find('tr').eq(1).find('td');
+        msg_content.eq(t++).text(js['name']);
+        msg_content.eq(t++).text(js['college']);
+        msg_content.eq(t++).text(js['major']);
+        msg_content.eq(t++).text(js['class']);
+        msg_content.eq(t++).text(js['id']);
       }
       _ref = js.detail;
       for (semester in _ref) {
@@ -34,18 +46,19 @@
         }
         cnt++;
       }
-      return $('#p-score tr').not('.' + (cnt - 1)).hide();
+      $('#p-score tr').not('.' + (cnt - 1)).hide();
+      return fail();
     };
     $('#search-btn').click(function() {
       var number, url;
       $('.jumbotron').slideUp();
       number = $('#input1').val();
       console.log(number);
-      number = '1205030209.html';
-      url = dynamicWebService + '/api/score/' + number;
+      url = dynamicWebService + '/api/score/' + '1205030209.html';
       $.get(url, (function(result, status, xhr) {
         $('#p-score').empty();
-        settleFile(result);
+        $('.btn-group').empty();
+        settleFile(result, number);
         return $('.score-show-box').fadeIn();
       }), 'json');
       return false;

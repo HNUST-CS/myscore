@@ -2,18 +2,28 @@ dynamicWebService = '.'
 $(document).ready ->
 	js = ''
 	fail = ->
-		$('#p-msg').find('tr')
+		$('#p-score').find('tr').each ->
+			content = $(this).find('td').eq(2)
+			score = parseInt $(this).find('td').eq(2).text()
+			if score < 60
+				content.addClass('danger')
 
-	settleFile = (js)->
+	settleFile = (js,id)->
 		t = 0;cnt = 0;
+		$('#id-confirm-btn').attr('data-id',id)
 		$('#p-score').append("<tr class='0 1 2 3 4 5 6 7 8'>
 					<th>课程</th>
 					<th>学分</th>
 					<th>成绩</th>
 				</tr>")
-		for i,j of js
-			console.log i,j
-			$('#p-msg').find('tr').eq(1).find('td').eq(t++).text(j)
+		for i of js
+			console.log i
+			msg_content = $('#p-msg').find('tr').eq(1).find('td')
+			msg_content.eq(t++).text(js['name'])
+			msg_content.eq(t++).text(js['college'])
+			msg_content.eq(t++).text(js['major'])
+			msg_content.eq(t++).text(js['class'])
+			msg_content.eq(t++).text(js['id'])
 		for semester,se of js.detail
 			console.log semester
 			$('.btn-group').prepend("<button data-tri='#{cnt}' class='btn btn-primary'>#{semester}</button>")
@@ -28,16 +38,17 @@ $(document).ready ->
 				</tr>")
 			cnt++;
 		$('#p-score tr').not('.'+(cnt-1)).hide();
+		fail()
 
 	$('#search-btn').click ->
 		$('.jumbotron').slideUp()
 		number = $('#input1').val()
 		console.log number
-		number = '1205030209.html'
-		url = dynamicWebService + '/api/score/' + number
+		url = dynamicWebService + '/api/score/' + '1205030209.html'
 		$.get url,((result,status,xhr) ->
 			$('#p-score').empty();
-			settleFile result
+			$('.btn-group').empty();
+			settleFile result,number
 			$('.score-show-box').fadeIn()
 		),'json'
 		return false
