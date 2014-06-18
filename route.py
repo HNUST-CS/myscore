@@ -6,7 +6,9 @@ def getScore(id):
     if id[2]=='5': url = 'http://211.67.208.67/xxjw/xscjcx.jsp?yzbh='
     else: url = 'http://211.67.208.69/kdjw/xscjcx.jsp?yzbh='
     try:
-        sel=selector.Selector(text=urllib2.urlopen(url+str(id)).read())
+        html=urllib2.urlopen(url+str(id)).read()
+        if html<100 : return "{'error':true}"
+        sel=selector.Selector(text=html)
     except:
         return "{'error':true}"
     # import ipdb;ipdb.set_trace()    
