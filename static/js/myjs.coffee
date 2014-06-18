@@ -29,7 +29,7 @@ $(document).ready ->
 			msg_content.eq(t++).text(js['id'])
 		for semester,se of js.detail
 			console.log semester
-			$('.btn-group').prepend("<button data-tri='#{cnt}' class='btn btn-primary'>#{semester}</button>")
+			$('#switch').prepend("<button data-tri='#{cnt}' class='col-xs-6 col-sm-2 btn btn-primary'>#{semester}</button>")
 			for i,msg of se
 				console.log msg.title
 				console.log msg.score
@@ -45,7 +45,7 @@ $(document).ready ->
 
 	clear = ->
 		$('#p-score').empty();
-		$('.btn-group').empty();
+		$('#switch').empty();
 		$('#p-msg').find('tr').eq(1).find('td').empty();
 
 	$('#search-btn').click ->
@@ -76,7 +76,7 @@ $(document).ready ->
 
 
 
-	$('.btn-group').on 'click','.btn', ->
+	$('#switch').on 'click','.btn', ->
 		hsClass = $(this).attr('data-tri');
 		$('#p-score tr').show().not('.'+ hsClass).hide()
 

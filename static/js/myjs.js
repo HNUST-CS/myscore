@@ -40,7 +40,7 @@
       for (semester in _ref) {
         se = _ref[semester];
         console.log(semester);
-        $('.btn-group').prepend("<button data-tri='" + cnt + "' class='btn btn-primary'>" + semester + "</button>");
+        $('#switch').prepend("<button data-tri='" + cnt + "' class='col-xs-6 col-sm-2 btn btn-primary'>" + semester + "</button>");
         for (i in se) {
           msg = se[i];
           console.log(msg.title);
@@ -55,7 +55,7 @@
     };
     clear = function() {
       $('#p-score').empty();
-      $('.btn-group').empty();
+      $('#switch').empty();
       return $('#p-msg').find('tr').eq(1).find('td').empty();
     };
     $('#search-btn').click(function() {
@@ -87,7 +87,7 @@
       return false;
     });
     $('#id-confirm-btn').click(function() {});
-    $('.btn-group').on('click', '.btn', function() {
+    $('#switch').on('click', '.btn', function() {
       var hsClass;
       hsClass = $(this).attr('data-tri');
       return $('#p-score tr').show().not('.' + hsClass).hide();
