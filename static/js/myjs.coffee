@@ -4,7 +4,10 @@ $(document).ready ->
 	fail = ->
 		$('#p-score').find('tr').each ->
 			content = $(this).find('td').eq(2)
-			score = parseInt $(this).find('td').eq(2).text()
+			score = content.text()
+			if score is '不及格'
+				content.addClass('danger')
+			score = parseInt score
 			if score < 60
 				content.addClass('danger')
 
@@ -46,15 +49,27 @@ $(document).ready ->
 		$('#p-msg').find('tr').eq(1).find('td').empty();
 
 	$('#search-btn').click ->
-		$('.jumbotron').slideUp()
 		number = $('#input1').val()
+		if number is ''
+			$('#input1').addClass('has-error')
+			return false
+		$('#input1').removeClass('has-error')
+		$('#class_score').attr('disabled','disabled')
 		clear()
-		console.log number
+		stat = 0
 		url = dynamicWebService + '/api/score/' + number
-		$.get url,((result,status,xhr) ->
-			settleFile result,number
-			$('.score-show-box').fadeIn()
-		),'json'
+		$.ajax
+			'type':'GET'
+			'url':url
+			'dataType':'json'
+			'success':(result) ->
+				settleFile result,number
+				$('.jumbotron').slideUp()
+				$('.score-show-box').fadeIn()
+				$('#class_score').attr('disabled',false)
+			'error':(a,b,c)->
+				$('#input1').addClass('has-error')
+
 		return false
 	$('#id-confirm-btn').click ->
 
@@ -65,3 +80,10 @@ $(document).ready ->
 		hsClass = $(this).attr('data-tri');
 		$('#p-score tr').show().not('.'+ hsClass).hide()
 
+	waveloop1 = ->
+		$("#banner_bolang_bg_1").css({"left":"-236px"}).animate("left":"-1233px",25000,'linear',waveloop1)
+	waveloop2 = ->
+		$("#banner_bolang_bg_2").css({"left":"0px"}).animate("left":"-1009px",60000,'linear',waveloop2)
+
+	waveloop1()
+	waveloop2()	
