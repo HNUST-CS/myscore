@@ -5,7 +5,7 @@
   dynamicWebService = '.';
 
   $(document).ready(function() {
-    var fail, js, settleFile;
+    var clear, fail, js, settleFile;
     js = '';
     fail = function() {
       return $('#p-score').find('tr').each(function() {
@@ -49,20 +49,25 @@
       $('#p-score tr').not('.' + (cnt - 1)).hide();
       return fail();
     };
+    clear = function() {
+      $('#p-score').empty();
+      $('.btn-group').empty();
+      return $('#p-msg').find('tr').eq(1).find('td').empty();
+    };
     $('#search-btn').click(function() {
       var number, url;
       $('.jumbotron').slideUp();
       number = $('#input1').val();
+      clear();
       console.log(number);
-      url = dynamicWebService + '/api/score/' + '1205030209.html';
+      url = dynamicWebService + '/api/score/' + number;
       $.get(url, (function(result, status, xhr) {
-        $('#p-score').empty();
-        $('.btn-group').empty();
         settleFile(result, number);
         return $('.score-show-box').fadeIn();
       }), 'json');
       return false;
     });
+    $('#id-confirm-btn').click(function() {});
     return $('.btn-group').on('click', '.btn', function() {
       var hsClass;
       hsClass = $(this).attr('data-tri');

@@ -40,18 +40,27 @@ $(document).ready ->
 		$('#p-score tr').not('.'+(cnt-1)).hide();
 		fail()
 
+	clear = ->
+		$('#p-score').empty();
+		$('.btn-group').empty();
+		$('#p-msg').find('tr').eq(1).find('td').empty();
+
 	$('#search-btn').click ->
 		$('.jumbotron').slideUp()
 		number = $('#input1').val()
+		clear()
 		console.log number
-		url = dynamicWebService + '/api/score/' + '1205030209.html'
+		url = dynamicWebService + '/api/score/' + number
 		$.get url,((result,status,xhr) ->
-			$('#p-score').empty();
-			$('.btn-group').empty();
 			settleFile result,number
 			$('.score-show-box').fadeIn()
 		),'json'
 		return false
+	$('#id-confirm-btn').click ->
+
+
+
+
 	$('.btn-group').on 'click','.btn', ->
 		hsClass = $(this).attr('data-tri');
 		$('#p-score tr').show().not('.'+ hsClass).hide()
