@@ -1,11 +1,11 @@
 dynamicWebService = '.'
 $(document).ready ->
 	js = ''
-	fail = ->
+	checkFailCourse = ->
 		$('#p-score').find('tr').each ->
 			content = $(this).find('td').eq(2)
 			score = content.text()
-			if score is '不及格'
+			if score is '不及格' or score is ''
 				content.addClass('danger')
 			score = parseInt score
 			if score < 60
@@ -41,7 +41,7 @@ $(document).ready ->
 				</tr>")
 			cnt++;
 		$('#p-score tr').not('.'+(cnt-1)).hide();
-		fail()
+		checkFailCourse()
 
 	clear = ->
 		$('#p-score').empty();

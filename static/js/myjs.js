@@ -5,14 +5,14 @@
   dynamicWebService = '.';
 
   $(document).ready(function() {
-    var clear, fail, js, settleFile, waveloop1, waveloop2;
+    var checkFailCourse, clear, js, settleFile, waveloop1, waveloop2;
     js = '';
-    fail = function() {
+    checkFailCourse = function() {
       return $('#p-score').find('tr').each(function() {
         var content, score;
         content = $(this).find('td').eq(2);
         score = content.text();
-        if (score === '不及格') {
+        if (score === '不及格' || score === '') {
           content.addClass('danger');
         }
         score = parseInt(score);
@@ -51,7 +51,7 @@
         cnt++;
       }
       $('#p-score tr').not('.' + (cnt - 1)).hide();
-      return fail();
+      return checkFailCourse();
     };
     clear = function() {
       $('#p-score').empty();
