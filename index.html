@@ -10,6 +10,7 @@
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.js"></script>
 		<script type="text/javascript" src="js/myjs.js"></script>
+		<script type="text/javascript" src="js/prefixfree.min.js"></script>
 		<!--[if lt IE 9]>
 		<script type="text/javascript" src="js/respond.js"></script>
 		<script type="text/javascript" src="js/html5.js"></script>
@@ -60,12 +61,45 @@
 						<span class="input-group-addon">个人成绩</span>
 					    <input type="text" class="form-control" id="input1" placeholder="输入学号">
 			      		<span class="input-group-btn">
-			      			<button id="search-btn" class="btn btn-default">Go</button>
+			      			<button id="search-btn" class="btn btn-success">Go</button>
 			      		</span>
 					  </div>
 					</form>
 				</div>
 			</div>
 		</div>
+		<div class="score-show-box">
+			<h4>个人信息</h4>
+			<table id="p-msg" class="table table-striped table-hover table-bordered">
+				<tr>
+					<th>姓名</th>
+					<th>学院</th>
+					<th>专业</th>
+					<th>班级</th>
+					<th>学号</th>
+				</tr>
+				<tr>
+					<td>xx</td>
+					<td>xx</td>
+					<td>xx</td>
+					<td>xx</td>
+					<td>xx</td>
+				</tr>
+			</table>
+			<div class="btn-group">
+				
+			</div>
+			<botton class="pull-right btn btn-warning">查看全班成绩</botton>
+			<table  class="score-table table table-striped table-hover table-bordered">
+				<tbody id="p-score">
+				<tr>
+					<th>课程</th>
+					<th>学分</th>
+					<th>成绩</th>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
 	</body>
 </html>

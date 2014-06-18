@@ -14,3 +14,18 @@ body{
 	margin-top: -19px;
 	background-color: ;
 }
+.input-group-addon{
+	background-color: #47A447;
+	color: white;
+}
+.score-show-box{
+	display: none;
+	margin-top: 100px;
+	border: solid 1px;
+	border-radius: 17px;
+	border-color: #DDD;
+	padding: 10px;
+}
+.score-table{
+	margin-top: 10px;
+}

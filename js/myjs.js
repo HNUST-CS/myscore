@@ -5,31 +5,38 @@
   dynamicWebService = '.';
 
   $(document).ready(function() {
-    var js, settleFile;
+    var fail, js, settleFile;
     js = '';
+    fail = function() {
+      return $('#p-msg').find('tr');
+    };
     settleFile = function(js) {
-      var i, msg, se, semester, _ref, _results;
-      console.log(js.detail);
+      var cnt, i, j, msg, se, semester, t, _ref;
+      t = 0;
+      cnt = 0;
+      $('#p-score').append("<tr class='0 1 2 3 4 5 6 7 8'> <th>课程</th> <th>学分</th> <th>成绩</th> </tr>");
+      for (i in js) {
+        j = js[i];
+        console.log(i, j);
+        $('#p-msg').find('tr').eq(1).find('td').eq(t++).text(j);
+      }
       _ref = js.detail;
-      _results = [];
       for (semester in _ref) {
         se = _ref[semester];
         console.log(semester);
-        _results.push((function() {
-          var _results1;
-          _results1 = [];
-          for (i in se) {
-            msg = se[i];
-            console.log(msg.title);
-            console.log(msg.score);
-            _results1.push(console.log(msg.grade));
-          }
-          return _results1;
-        })());
+        $('.btn-group').prepend("<button data-tri='" + cnt + "' class='btn btn-primary'>" + semester + "</button>");
+        for (i in se) {
+          msg = se[i];
+          console.log(msg.title);
+          console.log(msg.score);
+          console.log(msg.grade);
+          $('#p-score').append("<tr class='" + cnt + "'> <td>" + msg.title + "</td> <td>" + msg.grade + "</td> <td>" + msg.score + "</td> </tr>");
+        }
+        cnt++;
       }
-      return _results;
+      return $('#p-score tr').not('.' + (cnt - 1)).hide();
     };
-    return $('#search-btn').click(function() {
+    $('#search-btn').click(function() {
       var number, url;
       $('.jumbotron').slideUp();
       number = $('#input1').val();
@@ -37,10 +44,16 @@
       number = '1205030209.html';
       url = dynamicWebService + '/api/score/' + number;
       $.get(url, (function(result, status, xhr) {
-        console.log(result + status);
-        return settleFile(result);
+        $('#p-score').empty();
+        settleFile(result);
+        return $('.score-show-box').fadeIn();
       }), 'json');
       return false;
+    });
+    return $('.btn-group').on('click', '.btn', function() {
+      var hsClass;
+      hsClass = $(this).attr('data-tri');
+      return $('#p-score tr').show().not('.' + hsClass).hide();
     });
   });
 
