@@ -5,13 +5,17 @@
   dynamicWebService = '.';
 
   $(document).ready(function() {
-    var clear, fail, js, settleFile;
+    var clear, fail, js, settleFile, waveloop1, waveloop2;
     js = '';
     fail = function() {
       return $('#p-score').find('tr').each(function() {
         var content, score;
         content = $(this).find('td').eq(2);
-        score = parseInt($(this).find('td').eq(2).text());
+        score = content.text();
+        if (score === '不及格') {
+          content.addClass('danger');
+        }
+        score = parseInt(score);
         if (score < 60) {
           return content.addClass('danger');
         }
@@ -55,24 +59,55 @@
       return $('#p-msg').find('tr').eq(1).find('td').empty();
     };
     $('#search-btn').click(function() {
-      var number, url;
-      $('.jumbotron').slideUp();
+      var number, stat, url;
       number = $('#input1').val();
+      if (number === '') {
+        $('#input1').addClass('has-error');
+        return false;
+      }
+      $('#input1').removeClass('has-error');
+      $('#class_score').attr('disabled', 'disabled');
       clear();
-      console.log(number);
+      stat = 0;
       url = dynamicWebService + '/api/score/' + number;
-      $.get(url, (function(result, status, xhr) {
-        settleFile(result, number);
-        return $('.score-show-box').fadeIn();
-      }), 'json');
+      $.ajax({
+        'type': 'GET',
+        'url': url,
+        'dataType': 'json',
+        'success': function(result) {
+          settleFile(result, number);
+          $('.jumbotron').slideUp();
+          $('.score-show-box').fadeIn();
+          return $('#class_score').attr('disabled', false);
+        },
+        'error': function(a, b, c) {
+          return $('#input1').addClass('has-error');
+        }
+      });
       return false;
     });
     $('#id-confirm-btn').click(function() {});
-    return $('.btn-group').on('click', '.btn', function() {
+    $('.btn-group').on('click', '.btn', function() {
       var hsClass;
       hsClass = $(this).attr('data-tri');
       return $('#p-score tr').show().not('.' + hsClass).hide();
     });
+    waveloop1 = function() {
+      return $("#banner_bolang_bg_1").css({
+        "left": "-236px"
+      }).animate({
+        "left": "-1233px"
+      }, 25000, 'linear', waveloop1);
+    };
+    waveloop2 = function() {
+      return $("#banner_bolang_bg_2").css({
+        "left": "0px"
+      }).animate({
+        "left": "-1009px"
+      }, 60000, 'linear', waveloop2);
+    };
+    waveloop1();
+    return waveloop2();
   });
 
 }).call(this);
