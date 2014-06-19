@@ -66,15 +66,19 @@ h1,h2,h3,h4,h5,h6{
 }
 .score-show-box{
 	display: none;
-	margin-top: 100px;
+	margin-top: 110px;
 	border: solid 1px;
 	border-radius: 17px;
 	border-color: #DDD;
 	padding: 10px;
 }
-.score-table{
+#score-table{
 	margin-top: 70px;
 }
 .has-error{
 	border-color: #A94442;
+}
+.sonic{
+	position: absolute;
+	left: 45%;
 }
