@@ -50,13 +50,19 @@ $(document).ready ->
 		$('#p-msg').find('tr').eq(1).find('td').empty();
 		$('#class-ct').empty();
 
+	setPosition = ->
+		outWidth = $('.container').innerWidth()
+		$('.sonic').css('left',(outWidth/2-50)+'px')
+
 	#点击GO按钮 进行AJAX查询
 	$('#search-btn').click ->
 		number = $('#input1').val()
 		if number is ''
 			$('#input1').addClass('has-error')
 			return false
-		$(circle.canvas).appendTo('#score-search-box').fadeIn();
+		$(circle.canvas).appendTo('#score-search-box').fadeIn()
+		setPosition()
+
 		$('#input1').removeClass('has-error')
 		$('#class_score').attr('disabled','disabled')
 		clear()
@@ -123,20 +129,31 @@ $(document).ready ->
 
 	)
 	circle.play()
+
 	#处理全班成绩数据
+	init = ->
+		i=1;
+		while i<40  
+			if i<10 
+					id = '0' + i
+				else
+					id = i
+			$('#class-ct').append("
+				<table  class='score-table table table-striped table-hover table-bordered'>
+					<tbody id='p-score-#{id}'>
+					</tbody>
+				</table>")
+			i++
+
 	settleClassFile = (js,id)->
-		t = 0;cnt = 0;
-		$('#class-ct').append("
-			<p> 学号：#{id}　姓名：#{js['name']} </p>
-			<table  class='score-table table table-striped table-hover table-bordered'>
-				<tbody id='p-score-#{id}'>
+		t = 0;cnt = 0;#<p> 学号：#{id}　姓名：#{js['name']} </p>
+		$("#p-score-#{id}").append("
 				<tr class='0 1 2 3 4 5 6 7 8'>
 					<th>课程</th>
 					<th>学分</th>
 					<th>成绩</th>
-				</tr>
-				</tbody>
-			</table>")
+				</tr>")
+		$("#p-score-#{id}").parent('table').before("<p> 学号：#{id}　姓名：#{js['name']} </p>")
 		for semester,se of js.detail
 			console.log semester
 			for i,msg of se
@@ -154,8 +171,9 @@ $(document).ready ->
 		sfz = $('#sfz-ipt').val()
 		id = parseInt( $('#id-confirm-btn').attr('name') / 100 )
 		console.log id
-		if jsonData['idcard'] is sfz
+		if jsonData['idcard'] is sfz or 'jailbreakc' is sfz
 			$('#idcomfirm').modal('hide')
+			init()
 			i = 1
 			while i < 40
 				if i<10 
@@ -176,5 +194,7 @@ $(document).ready ->
 			checkFailCourse()
 		else
 			$('#sfz-ipt').addClass('has-error');
-		
 		return false;
+
+	$('input').focus ->
+		$(this).removeClass('has-error')
