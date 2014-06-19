@@ -5,7 +5,7 @@
   dynamicWebService = '.';
 
   $(document).ready(function() {
-    var checkFailCourse, clear, js, settleFile, waveloop1, waveloop2;
+    var checkFailCourse, circle, clear, js, settleFile, waveloop1, waveloop2;
     js = '';
     checkFailCourse = function() {
       return $('#p-score').find('tr').each(function() {
@@ -65,6 +65,7 @@
         $('#input1').addClass('has-error');
         return false;
       }
+      $(circle.canvas).appendTo('#score-search-box').fadeIn();
       $('#input1').removeClass('has-error');
       $('#class_score').attr('disabled', 'disabled');
       clear();
@@ -78,10 +79,12 @@
           settleFile(result, number);
           $('.jumbotron').slideUp();
           $('.score-show-box').fadeIn();
-          return $('#class_score').attr('disabled', false);
+          $('#class_score').attr('disabled', false);
+          return $('.sonic').fadeOut();
         },
         'error': function(a, b, c) {
-          return $('#input1').addClass('has-error');
+          $('#input1').addClass('has-error');
+          return $('.sonic').fadeOut();
         }
       });
       return false;
@@ -107,7 +110,25 @@
       }, 60000, 'linear', waveloop2);
     };
     waveloop1();
-    return waveloop2();
+    waveloop2();
+    circle = new Sonic({
+      width: 100,
+      height: 100,
+      stepsPerFrame: 2,
+      trailLength: 1,
+      pointDistance: .02,
+      fps: 30,
+      fillColor: '#3276B1',
+      step: function(point, index) {
+        this._.beginPath();
+        this._.moveTo(point.x, point.y);
+        this._.arc(point.x, point.y, index * 7, 0, Math.PI * 2, false);
+        this._.closePath();
+        return this._.fill();
+      },
+      path: [['arc', 50, 50, 30, 0, 360]]
+    });
+    return circle.play();
   });
 
 }).call(this);

@@ -1,6 +1,7 @@
 dynamicWebService = '.'
 $(document).ready ->
 	js = ''
+	#给不及格科目加红框
 	checkFailCourse = ->
 		$('#p-score').find('tr').each ->
 			content = $(this).find('td').eq(2)
@@ -42,17 +43,19 @@ $(document).ready ->
 			cnt++;
 		$('#p-score tr').not('.'+(cnt-1)).hide();
 		checkFailCourse()
-
+	#清除旧数据
 	clear = ->
 		$('#p-score').empty();
 		$('#switch').empty();
 		$('#p-msg').find('tr').eq(1).find('td').empty();
 
+	#点击GO按钮 进行AJAX查询
 	$('#search-btn').click ->
 		number = $('#input1').val()
 		if number is ''
 			$('#input1').addClass('has-error')
 			return false
+		$(circle.canvas).appendTo('#score-search-box').fadeIn();
 		$('#input1').removeClass('has-error')
 		$('#class_score').attr('disabled','disabled')
 		clear()
@@ -67,19 +70,21 @@ $(document).ready ->
 				$('.jumbotron').slideUp()
 				$('.score-show-box').fadeIn()
 				$('#class_score').attr('disabled',false)
+				$('.sonic').fadeOut();
 			'error':(a,b,c)->
 				$('#input1').addClass('has-error')
+				$('.sonic').fadeOut();
 
 		return false
 	$('#id-confirm-btn').click ->
 
 
-
-
+	#切换学期
 	$('#switch').on 'click','.btn', ->
 		hsClass = $(this).attr('data-tri');
 		$('#p-score tr').show().not('.'+ hsClass).hide()
 
+	#底栏动画
 	waveloop1 = ->
 		$("#banner_bolang_bg_1").css({"left":"-236px"}).animate("left":"-1233px",25000,'linear',waveloop1)
 	waveloop2 = ->
@@ -87,3 +92,33 @@ $(document).ready ->
 
 	waveloop1()
 	waveloop2()	
+
+	#加载动画
+
+
+	circle = new Sonic(	
+		width: 100,
+		height: 100,
+
+		stepsPerFrame: 2,
+		trailLength: 1,
+		pointDistance: .02,
+		fps: 30,
+
+		fillColor: '#3276B1',
+
+		step: (point, index) ->
+			
+			this._.beginPath();
+			this._.moveTo(point.x, point.y);
+			this._.arc(point.x, point.y, index * 7, 0, Math.PI*2, false);
+			this._.closePath();
+			this._.fill();
+
+		path: [
+			['arc', 50, 50, 30, 0, 360]
+		]
+
+	)
+	circle.play()
+

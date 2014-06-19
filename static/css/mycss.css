@@ -1,6 +1,7 @@
 #score-search-box{
 	position: relative;
 	top:20px;
+	text-align: center;
 }
 #banner_bolang_bg_1 {
 	width: 997px;
@@ -53,15 +54,14 @@ h1,h2,h3,h4,h5,h6{
 	font-family: '微软雅黑','宋体',Tahoma,Geneva,sans-serif;
 }
 .navbar-inverse{
-	background-color: ;
-	border-color: ;
+	border-radius: 0;
 }
 .jumbotron{
 	margin-top: -19px;
 	background-color: ;
 }
 .input-group-addon{
-	background-color: #47A447;
+	background-color: #3276B1;
 	color: white;
 }
 .score-show-box{
