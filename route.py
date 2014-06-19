@@ -8,20 +8,19 @@ def getScore(id):
     id=str(id)
     # if id[2]=='5': url = 'http://211.67.208.67/xxjw/xscjcx.jsp?yzbh='
     # else: url = 'http://211.67.208.69/kdjw/xscjcx.jsp?yzbh='
-
+    error_return = "{'error':true}"
     if id[2]=='5': url = 'http://127.0.0.1:2222/xxjw/xscjcx.jsp?yzbh='
     else: url = 'http://127.0.0.1:2222/kdjw/xscjcx.jsp?yzbh='
     try:
         html=urllib2.urlopen(url+str(id)).read()
-        if html<100 : return "{'error':true}"
+        if len(html<100) : return error_return
         sel=selector.Selector(text=html)
     except:
-        return "{'error':true}"
-    # import ipdb;ipdb.set_trace()    
+        return error_return
     table_heads=sel.xpath('//*[@id="xsjbxx"]/tr/td/text()').extract()
-    print table_heads
     name = table_heads[1]
     id = table_heads[3]
+    idcard = table_heads[5]
     major = table_heads[9]
     _class = table_heads[11]
     college = table_heads[7]
@@ -44,7 +43,8 @@ def getScore(id):
             title,grade,score,Null = re.findall('(?<=\>).*(?=<)',i)
             item = {'title':title,'grade':grade,'score':score}
             every_score.append(item)
-    js = {'name':name,'college':college,'major':major,'class':_class,'id':id,'detail':detail}
+    js = OrderedDict({'name':name,'college':college,'major':major,'class':_class,'id':id,'idcard':idcard})
+    js['detail'] = detail
     return json.dumps(js,ensure_ascii=False,indent=None,encoding='UTF8')
 
 if __name__ == 'main':
