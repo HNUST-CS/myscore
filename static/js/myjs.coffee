@@ -1,9 +1,9 @@
 dynamicWebService = '.'
 $(document).ready ->
-	js = ''
+	jsonData = ''
 	#给不及格科目加红框
 	checkFailCourse = ->
-		$('#p-score').find('tr').each ->
+		$('.score-table').find('tr').each ->
 			content = $(this).find('td').eq(2)
 			score = content.text()
 			if score is '不及格' or score is ''
@@ -14,7 +14,7 @@ $(document).ready ->
 
 	settleFile = (js,id)->
 		t = 0;cnt = 0;
-		$('#id-confirm-btn').attr('data-id',id)
+		$('#id-confirm-btn').attr('name',id)
 		$('#p-score').append("<tr class='0 1 2 3 4 5 6 7 8'>
 					<th>课程</th>
 					<th>学分</th>
@@ -66,6 +66,7 @@ $(document).ready ->
 			'url':url
 			'dataType':'json'
 			'success':(result) ->
+				jsonData = result
 				settleFile result,number
 				$('.jumbotron').slideUp()
 				$('.score-show-box').fadeIn()
@@ -82,7 +83,7 @@ $(document).ready ->
 	#切换学期
 	$('#switch').on 'click','.btn', ->
 		hsClass = $(this).attr('data-tri');
-		$('#p-score tr').show().not('.'+ hsClass).hide()
+		$('.score-table tr').show().not('.'+ hsClass).hide()
 
 	#底栏动画
 	waveloop1 = ->
@@ -121,4 +122,53 @@ $(document).ready ->
 
 	)
 	circle.play()
+	#处理全班成绩数据
+	settleClassFile = (js,id)->
+		t = 0;cnt = 0;
+		$('.score-show-box').append("
+			<p> 学号：#{id}　姓名：#{js['name']} </p>
+			<table  class='score-table table table-striped table-hover table-bordered'>
+				<tbody id='p-score-#{id}'>
+				<tr class='0 1 2 3 4 5 6 7 8'>
+					<th>课程</th>
+					<th>学分</th>
+					<th>成绩</th>
+				</tr>
+				</tbody>
+			</table>")
+		for semester,se of js.detail
+			console.log semester
+			for i,msg of se
+				$("#p-score-#{id}").append("<tr class='#{cnt}'>
+					<td>#{msg.title}</td>
+					<td>#{msg.grade}</td>
+					<td>#{msg.score}</td>
+				</tr>")
+			cnt++;
+		$("#p-score-#{id} tr").not('.'+(cnt-1)).hide();
 
+
+	#全班成绩
+	$('#id-confirm-btn').click ->
+		sfz = $('#sfz-ipt').val()
+		id = parseInt( $('#id-confirm-btn').attr('name') / 100 )
+		console.log id
+		if jsonData['idcard'] is sfz
+			$('#idcomfirm').modal('hide')
+			i = 1
+			while i < 40
+				if i<10 
+					stuNo = '0' + i
+				else
+					stuNo = i
+				url = url = dynamicWebService + '/api/score/' + id + stuNo
+				console.log url
+				$.ajax
+					'type':'GET'
+					'url':url
+					'dataType':'json'
+					'success':(result) ->
+						settleClassFile result,stuNo
+					'error':(a,b,c)->
+				i++
+			checkFailCourse()

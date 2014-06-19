@@ -5,10 +5,10 @@
   dynamicWebService = '.';
 
   $(document).ready(function() {
-    var checkFailCourse, circle, clear, js, settleFile, waveloop1, waveloop2;
-    js = '';
+    var checkFailCourse, circle, clear, jsonData, settleClassFile, settleFile, waveloop1, waveloop2;
+    jsonData = '';
     checkFailCourse = function() {
-      return $('#p-score').find('tr').each(function() {
+      return $('.score-table').find('tr').each(function() {
         var content, score;
         content = $(this).find('td').eq(2);
         score = content.text();
@@ -25,7 +25,7 @@
       var cnt, i, msg, msg_content, se, semester, t, _ref;
       t = 0;
       cnt = 0;
-      $('#id-confirm-btn').attr('data-id', id);
+      $('#id-confirm-btn').attr('name', id);
       $('#p-score').append("<tr class='0 1 2 3 4 5 6 7 8'> <th>课程</th> <th>学分</th> <th>成绩</th> </tr>");
       for (i in js) {
         console.log(i);
@@ -76,6 +76,7 @@
         'url': url,
         'dataType': 'json',
         'success': function(result) {
+          jsonData = result;
           settleFile(result, number);
           $('.jumbotron').slideUp();
           $('.score-show-box').fadeIn();
@@ -93,7 +94,7 @@
     $('#switch').on('click', '.btn', function() {
       var hsClass;
       hsClass = $(this).attr('data-tri');
-      return $('#p-score tr').show().not('.' + hsClass).hide();
+      return $('.score-table tr').show().not('.' + hsClass).hide();
     });
     waveloop1 = function() {
       return $("#banner_bolang_bg_1").css({
@@ -128,7 +129,54 @@
       },
       path: [['arc', 50, 50, 30, 0, 360]]
     });
-    return circle.play();
+    circle.play();
+    settleClassFile = function(js, id) {
+      var cnt, i, msg, se, semester, t, _ref;
+      t = 0;
+      cnt = 0;
+      $('.score-show-box').append("<p> 学号：" + id + "　姓名：" + js['name'] + " </p> <table  class='score-table table table-striped table-hover table-bordered'> <tbody id='p-score-" + id + "'> <tr class='0 1 2 3 4 5 6 7 8'> <th>课程</th> <th>学分</th> <th>成绩</th> </tr> </tbody> </table>");
+      _ref = js.detail;
+      for (semester in _ref) {
+        se = _ref[semester];
+        console.log(semester);
+        for (i in se) {
+          msg = se[i];
+          $("#p-score-" + id).append("<tr class='" + cnt + "'> <td>" + msg.title + "</td> <td>" + msg.grade + "</td> <td>" + msg.score + "</td> </tr>");
+        }
+        cnt++;
+      }
+      return $("#p-score-" + id + " tr").not('.' + (cnt - 1)).hide();
+    };
+    return $('#id-confirm-btn').click(function() {
+      var i, id, sfz, stuNo, url;
+      sfz = $('#sfz-ipt').val();
+      id = parseInt($('#id-confirm-btn').attr('name') / 100);
+      console.log(id);
+      if (jsonData['idcard'] === sfz) {
+        $('#idcomfirm').modal('hide');
+        i = 1;
+        while (i < 40) {
+          if (i < 10) {
+            stuNo = '0' + i;
+          } else {
+            stuNo = i;
+          }
+          url = url = dynamicWebService + '/api/score/' + id + stuNo;
+          console.log(url);
+          $.ajax({
+            'type': 'GET',
+            'url': url,
+            'dataType': 'json',
+            'success': function(result) {
+              return settleClassFile(result, stuNo);
+            },
+            'error': function(a, b, c) {}
+          });
+          i++;
+        }
+        return checkFailCourse();
+      }
+    });
   });
 
 }).call(this);
