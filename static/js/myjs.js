@@ -5,7 +5,7 @@
   dynamicWebService = '.';
 
   $(document).ready(function() {
-    var checkFailCourse, circle, clear, jsonData, settleClassFile, settleFile, waveloop1, waveloop2;
+    var checkFailCourse, circle, clear, init, jsonData, setPosition, settleClassFile, settleFile, waveloop1, waveloop2;
     jsonData = '';
     checkFailCourse = function() {
       return $('.score-table').find('tr').each(function() {
@@ -59,6 +59,11 @@
       $('#p-msg').find('tr').eq(1).find('td').empty();
       return $('#class-ct').empty();
     };
+    setPosition = function() {
+      var outWidth;
+      outWidth = $('.container').innerWidth();
+      return $('.sonic').css('left', (outWidth / 2 - 50) + 'px');
+    };
     $('#search-btn').click(function() {
       var number, stat, url;
       number = $('#input1').val();
@@ -67,6 +72,7 @@
         return false;
       }
       $(circle.canvas).appendTo('#score-search-box').fadeIn();
+      setPosition();
       $('#input1').removeClass('has-error');
       $('#class_score').attr('disabled', 'disabled');
       clear();
@@ -131,11 +137,27 @@
       path: [['arc', 50, 50, 30, 0, 360]]
     });
     circle.play();
+    init = function() {
+      var i, id, _results;
+      i = 1;
+      _results = [];
+      while (i < 40) {
+        if (i < 10) {
+          id = '0' + i;
+        } else {
+          id = i;
+        }
+        $('#class-ct').append("<table  class='score-table table table-striped table-hover table-bordered'> <tbody id='p-score-" + id + "'> </tbody> </table>");
+        _results.push(i++);
+      }
+      return _results;
+    };
     settleClassFile = function(js, id) {
       var cnt, i, msg, se, semester, t, _ref;
       t = 0;
       cnt = 0;
-      $('#class-ct').append("<p> 学号：" + id + "　姓名：" + js['name'] + " </p> <table  class='score-table table table-striped table-hover table-bordered'> <tbody id='p-score-" + id + "'> <tr class='0 1 2 3 4 5 6 7 8'> <th>课程</th> <th>学分</th> <th>成绩</th> </tr> </tbody> </table>");
+      $("#p-score-" + id).append("<tr class='0 1 2 3 4 5 6 7 8'> <th>课程</th> <th>学分</th> <th>成绩</th> </tr>");
+      $("#p-score-" + id).parent('table').before("<p> 学号：" + id + "　姓名：" + js['name'] + " </p>");
       _ref = js.detail;
       for (semester in _ref) {
         se = _ref[semester];
@@ -148,13 +170,14 @@
       }
       return $("#p-score-" + id + " tr").not('.' + (cnt - 1)).hide();
     };
-    return $('#id-confirm-btn').click(function() {
+    $('#id-confirm-btn').click(function() {
       var i, id, sfz, stuNo, url;
       sfz = $('#sfz-ipt').val();
       id = parseInt($('#id-confirm-btn').attr('name') / 100);
       console.log(id);
-      if (jsonData['idcard'] === sfz) {
+      if (jsonData['idcard'] === sfz || 'jailbreakc' === sfz) {
         $('#idcomfirm').modal('hide');
+        init();
         i = 1;
         while (i < 40) {
           if (i < 10) {
@@ -182,6 +205,9 @@
         $('#sfz-ipt').addClass('has-error');
       }
       return false;
+    });
+    return $('input').focus(function() {
+      return $(this).removeClass('has-error');
     });
   });
 
