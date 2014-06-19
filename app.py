@@ -23,6 +23,9 @@ def getScore(id):
         raise e
         return "{'error':true}"
 
+@app.route('/api/status')
+def getStatus():
+    return route.getStatus()
 
 @app.route('/')
 def index():

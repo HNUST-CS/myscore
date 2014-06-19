@@ -1,8 +1,11 @@
+#encoding=utf8
 from scrapy import selector
 import urllib2,re,json
 from collections import OrderedDict
 
-
+def getStatus():
+    if len(urllib2.urlopen('http://127.0.0.1:2222/').read())>100: return "{'status':true}"
+    return "{'status':false}"
 
 def getScore(id):
     id=str(id)
@@ -13,10 +16,11 @@ def getScore(id):
     else: url = 'http://127.0.0.1:2222/kdjw/xscjcx.jsp?yzbh='
     try:
         html=urllib2.urlopen(url+str(id)).read()
-        if len(html<100) : return error_return
+        if len(html)<100 : return u"{'error':true,'msg':'内网服务器脱机'}"
         sel=selector.Selector(text=html)
-    except:
-        return error_return
+    except Exception,e:
+        print e
+        return u"{'error':true,'msg':'服务器加载数据失败'}"
     table_heads=sel.xpath('//*[@id="xsjbxx"]/tr/td/text()').extract()
     name = table_heads[1]
     id = table_heads[3]
