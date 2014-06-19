@@ -56,7 +56,8 @@
     clear = function() {
       $('#p-score').empty();
       $('#switch').empty();
-      return $('#p-msg').find('tr').eq(1).find('td').empty();
+      $('#p-msg').find('tr').eq(1).find('td').empty();
+      return $('#class-ct').empty();
     };
     $('#search-btn').click(function() {
       var number, stat, url;
@@ -134,7 +135,7 @@
       var cnt, i, msg, se, semester, t, _ref;
       t = 0;
       cnt = 0;
-      $('.score-show-box').append("<p> 学号：" + id + "　姓名：" + js['name'] + " </p> <table  class='score-table table table-striped table-hover table-bordered'> <tbody id='p-score-" + id + "'> <tr class='0 1 2 3 4 5 6 7 8'> <th>课程</th> <th>学分</th> <th>成绩</th> </tr> </tbody> </table>");
+      $('#class-ct').append("<p> 学号：" + id + "　姓名：" + js['name'] + " </p> <table  class='score-table table table-striped table-hover table-bordered'> <tbody id='p-score-" + id + "'> <tr class='0 1 2 3 4 5 6 7 8'> <th>课程</th> <th>学分</th> <th>成绩</th> </tr> </tbody> </table>");
       _ref = js.detail;
       for (semester in _ref) {
         se = _ref[semester];
@@ -163,19 +164,24 @@
           }
           url = url = dynamicWebService + '/api/score/' + id + stuNo;
           console.log(url);
-          $.ajax({
-            'type': 'GET',
-            'url': url,
-            'dataType': 'json',
-            'success': function(result) {
-              return settleClassFile(result, stuNo);
-            },
-            'error': function(a, b, c) {}
-          });
+          (function(stuNo) {
+            return $.ajax({
+              'type': 'GET',
+              'url': url,
+              'dataType': 'json',
+              'success': function(result) {
+                return settleClassFile(result, stuNo);
+              },
+              'error': function(a, b, c) {}
+            });
+          })(stuNo);
           i++;
         }
-        return checkFailCourse();
+        checkFailCourse();
+      } else {
+        $('#sfz-ipt').addClass('has-error');
       }
+      return false;
     });
   });
 

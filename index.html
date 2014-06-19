@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"><!--IE-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-		<title>HNUST成绩查询</title>
+		<title>HNUST成绩查询 xxxxxxxxx</title>
 		<link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="static/css/mycss.css">
 		<script type="text/javascript" src="static/js/jquery.min.js"></script>
@@ -101,8 +101,8 @@
 			<div id="switch">
 				
 			</div>
-			<botton  id="class_score"data-toggle="modal" data-target="#idcomfirm" class="col-xs-12 col-sm-3 pull-right btn btn-warning">查看全班成绩</botton></a>
-			<table  id="score-table" class="table table-striped table-hover table-bordered">
+			<botton  id="class_score" data-toggle="modal" data-target="#idcomfirm" class="col-xs-12 col-sm-3 pull-right btn btn-warning">查看全班成绩</botton></a>
+			<table  id="score-table" class="score-table table table-striped table-hover table-bordered">
 				<tbody id="p-score">
 				<tr>
 					<th>课程</th>
@@ -111,6 +111,8 @@
 				</tr>
 				</tbody>
 			</table>
+			<div id="class-ct">
+			</div>
 		</div>
 	</div>
 	<div class='foot hidden-xs'>
@@ -129,6 +131,7 @@
 <div class="modal fade" id="idcomfirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
+    <form>
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title">请输入您的身份证号码</h4>
@@ -142,8 +145,9 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-        <button id="id-confirm-btn" type="button" class="btn btn-primary">确定</button>
+        <button type="submit" id="id-confirm-btn" type="button" class="btn btn-primary">确定</button>
       </div>
+      </form>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->

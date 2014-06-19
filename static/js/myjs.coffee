@@ -48,6 +48,7 @@ $(document).ready ->
 		$('#p-score').empty();
 		$('#switch').empty();
 		$('#p-msg').find('tr').eq(1).find('td').empty();
+		$('#class-ct').empty();
 
 	#点击GO按钮 进行AJAX查询
 	$('#search-btn').click ->
@@ -125,7 +126,7 @@ $(document).ready ->
 	#处理全班成绩数据
 	settleClassFile = (js,id)->
 		t = 0;cnt = 0;
-		$('.score-show-box').append("
+		$('#class-ct').append("
 			<p> 学号：#{id}　姓名：#{js['name']} </p>
 			<table  class='score-table table table-striped table-hover table-bordered'>
 				<tbody id='p-score-#{id}'>
@@ -163,12 +164,17 @@ $(document).ready ->
 					stuNo = i
 				url = url = dynamicWebService + '/api/score/' + id + stuNo
 				console.log url
-				$.ajax
-					'type':'GET'
-					'url':url
-					'dataType':'json'
-					'success':(result) ->
-						settleClassFile result,stuNo
-					'error':(a,b,c)->
+				do (stuNo)->
+					$.ajax
+						'type':'GET'
+						'url':url
+						'dataType':'json'
+						'success':(result) ->
+							settleClassFile result,stuNo
+						'error':(a,b,c)->
 				i++
 			checkFailCourse()
+		else
+			$('#sfz-ipt').addClass('has-error');
+		
+		return false;
