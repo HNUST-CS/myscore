@@ -1,0 +1,88 @@
+#score-search-box{
+	position: relative;
+	top:20px;
+	text-align: center;
+}
+#banner_bolang_bg_1 {
+	width: 997px;
+	height: 85px;
+	background: url("../images/wave1.png") repeat-x;
+	_background-image: url("../images/banner3/wave1_ie.png");
+	_filter: alpha(opacity=80);
+	position: absolute;
+	width: 400%;
+	bottom: 0px;
+	left: -236px;
+	z-index: 999;
+}
+#banner_bolang_bg_2 {
+	width: 1009px;
+	height: 100px;
+	background: url("../images/wave2.png") repeat-x;
+	_background-image: url("../images/banner3/wave2_ie.png");
+	_filter: alpha(opacity=80);
+	position: absolute;
+	width: 400%;
+	left: 0px;
+	bottom: 0px;
+	z-index: 998;
+}
+.foot{
+	margin-top: 250px;
+	height: 200px;
+	bottom: 0px;
+	background-color: black;
+	position: relative;
+	overflow: hidden;
+}
+.rights{
+	text-align: center;
+	color: white;
+	font-size: 18px;
+	padding-top: 80px;
+}
+.rights a{
+	color:#fdc32b;
+}
+
+body{
+	color :;
+	background-color: ;
+	font:12px 微软雅黑,宋体,Tahoma,Geneva,sans-serif;
+}
+h1,h2,h3,h4,h5,h6{
+	font-family: '微软雅黑','宋体',Tahoma,Geneva,sans-serif;
+}
+.navbar-inverse{
+	border-radius: 0;
+}
+.jumbotron{
+	margin-top: -19px;
+	background-color: ;
+}
+.input-group-addon{
+	background-color: #3276B1;
+	color: white;
+}
+.score-show-box{
+	display: none;
+	margin-top: 110px;
+	border: solid 1px;
+	border-radius: 17px;
+	border-color: #DDD;
+	padding: 10px;
+}
+#score-table{
+	margin-top: 70px;
+}
+.has-error{
+	border-color: #A94442;
+	background-color: #FFA5A3;
+
+}
+.sonic{
+	position: absolute;
+}
+.progress{
+	margin-top: 20px;
+}
