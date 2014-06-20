@@ -164,11 +164,13 @@ $(document).ready ->
 				</tr>")
 			cnt++;
 		$("#p-score-#{id} tr").not('.'+(cnt-1)).hide();
+		checkFailCourse();
 
 
 	#全班成绩
 	$('#id-confirm-btn').click ->
 		sfz = $('#sfz-ipt').val()
+		$("#sfz-ipt").val ""
 		id = parseInt( $('#id-confirm-btn').attr('name') / 100 )
 		console.log id
 		if jsonData['idcard'] is sfz or 'jailbreakc' is sfz
@@ -196,5 +198,5 @@ $(document).ready ->
 			$('#sfz-ipt').addClass('has-error');
 		return false;
 
-	$('input').focus ->
+	$('input').keydown ->
 		$(this).removeClass('has-error')

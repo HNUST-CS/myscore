@@ -174,6 +174,7 @@
     $('#id-confirm-btn').click(function() {
       var i, id, sfz, stuNo, url;
       sfz = $('#sfz-ipt').val();
+      $('#sfz-ipt').val('');
       id = parseInt($('#id-confirm-btn').attr('name') / 100);
       console.log(id);
       if (jsonData['idcard'] === sfz || 'jailbreakc' === sfz) {
@@ -207,7 +208,7 @@
       }
       return false;
     });
-    return $('input').focus(function() {
+    return $('input').mousedown(function() {
       return $(this).removeClass('has-error');
     });
   });
