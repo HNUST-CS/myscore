@@ -21,7 +21,6 @@ $(document).ready ->
 					<th>成绩</th>
 				</tr>")
 		for i of js
-			console.log i
 			msg_content = $('#p-msg').find('tr').eq(1).find('td')
 			msg_content.eq(t++).text(js['name'])
 			msg_content.eq(t++).text(js['college'])
@@ -29,7 +28,6 @@ $(document).ready ->
 			msg_content.eq(t++).text(js['class'])
 			msg_content.eq(t++).text(js['id'])
 		for semester,se of js.detail
-			console.log semester
 			$('#switch').prepend("<button data-tri='#{cnt}' class='col-xs-6 col-sm-2 btn btn-primary'>#{semester}</button>")
 			for i,msg of se
 				console.log msg.title
@@ -84,7 +82,6 @@ $(document).ready ->
 				$('.sonic').fadeOut();
 
 		return false
-	$('#id-confirm-btn').click ->
 
 
 	#切换学期
@@ -102,8 +99,6 @@ $(document).ready ->
 	waveloop2()	
 
 	#加载动画
-
-
 	circle = new Sonic(	
 		width: 100,
 		height: 100,
@@ -131,14 +126,15 @@ $(document).ready ->
 	circle.play()
 
 	#处理进度条
+	pwidth = 0
 	settleProgress = ->
 		per = $('.progress').width()/44
-		pwidth = $('#class-progress').width()
 		pwidth += per
 		$('#class-progress').width(pwidth)
 		if pwidth >= $('.progress').width()
 			$('.progress').fadeOut ->
 				$('#class-progress').width(0)
+				pwidth = 0
 
 
 	#处理全班成绩数据
@@ -216,7 +212,7 @@ $(document).ready ->
 		$(this).removeClass('has-error')
 
 	$('#update-bt').click ->
-		$('#update-ct').load('update.html')
+		$('#update-ct').load('static/update.html')
 
 	$('#feedback-bt').click ->
 		#$(circle.canvas).appendTo('#feedback-ct').fadeIn()

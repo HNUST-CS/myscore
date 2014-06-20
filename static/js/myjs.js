@@ -5,7 +5,7 @@
   dynamicWebService = '.';
 
   $(document).ready(function() {
-    var checkFailCourse, circle, clear, init, jsonData, setPosition, settleClassFile, settleFile, settleProgress, waveloop1, waveloop2;
+    var checkFailCourse, circle, clear, init, jsonData, pwidth, setPosition, settleClassFile, settleFile, settleProgress, waveloop1, waveloop2;
     jsonData = '';
     checkFailCourse = function() {
       return $('.score-table').find('tr').each(function() {
@@ -28,7 +28,6 @@
       $('#id-confirm-btn').attr('name', id);
       $('#p-score').append("<tr class='0 1 2 3 4 5 6 7 8'> <th>课程</th> <th>学分</th> <th>成绩</th> </tr>");
       for (i in js) {
-        console.log(i);
         msg_content = $('#p-msg').find('tr').eq(1).find('td');
         msg_content.eq(t++).text(js['name']);
         msg_content.eq(t++).text(js['college']);
@@ -39,7 +38,6 @@
       _ref = js.detail;
       for (semester in _ref) {
         se = _ref[semester];
-        console.log(semester);
         $('#switch').prepend("<button data-tri='" + cnt + "' class='col-xs-6 col-sm-2 btn btn-primary'>" + semester + "</button>");
         for (i in se) {
           msg = se[i];
@@ -97,7 +95,6 @@
       });
       return false;
     });
-    $('#id-confirm-btn').click(function() {});
     $('#switch').on('click', '.btn', function() {
       var hsClass;
       hsClass = $(this).attr('data-tri');
@@ -137,15 +134,16 @@
       path: [['arc', 50, 50, 30, 0, 360]]
     });
     circle.play();
+    pwidth = 0;
     settleProgress = function() {
-      var per, pwidth;
+      var per;
       per = $('.progress').width() / 44;
-      pwidth = $('#class-progress').width();
       pwidth += per;
       $('#class-progress').width(pwidth);
       if (pwidth >= $('.progress').width()) {
         return $('.progress').fadeOut(function() {
-          return $('#class-progress').width(0);
+          $('#class-progress').width(0);
+          return pwidth = 0;
         });
       }
     };
@@ -226,7 +224,7 @@
       return $(this).removeClass('has-error');
     });
     $('#update-bt').click(function() {
-      return $('#update-ct').load('update.html');
+      return $('#update-ct').load('static/update.html');
     });
     return $('#feedback-bt').click(function() {});
   });

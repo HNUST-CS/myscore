@@ -8,16 +8,16 @@
 		 <link rel="icon" href="static/images/ico_logo.ico" type="image/gif" sizes="16x16" />
 		<title>HNUST成绩查询</title>
 		<link rel="stylesheet" type="text/css" href="http://lib.sinaapp.com/js/bootstrap/v3.0.0/css/bootstrap.css">
-		<link rel="stylesheet" type="text/css" href="http://myscope.qiniudn.com/static/css/mycss.css">
+		<link rel="stylesheet" type="text/css" href="http://myscope.qiniudn.com/static/css/mycss.0.5.css">
 
-		<!--[if lt IE 9]>
+		<!--[if lte IE 9]>
 		<script type="text/javascript" src="http://myscope.qiniudn.com/static/js/respond.js"></script>
 		<script type="text/javascript" src="http://myscope.qiniudn.com/static/js/html5.js"></script>
 		<![endif]-->
-		<!--[if lt IE 6]>
-	    <link rel="stylesheet" type="text/css" href="http://myscope.qiniudn.com/static/css/bootstrap-ie6.css">
-	    <![endif]-->
-	    <!--[if lt IE 7]>
+
+		
+
+	    <!--[if lte IE 7]>
 	    <link rel="stylesheet" type="text/css" href="http://myscope.qiniudn.com/static/css/ie.css">
 	    <![endif]-->
 
@@ -46,7 +46,7 @@
 	    <ul class="nav navbar-nav navbar-right">
 	      <li><a target="_blank" href="https://github.com/wangkechun/myscore">View on GitHub</a></li>
 	      <li><a id="update-bt" data-toggle="modal" data-target="#update" href="">更新日志</a></li>
-	      <li><a id="feedback-bt" data-toggle="modal" data-target="#feedback" href="">问题反馈</a></li>
+	      <li><a id="feedback-bt" data-keyboard="false" data-toggle="modal" data-target="#feedback" href="">问题反馈</a></li>
 	    </ul>
 	  </div><!-- /.navbar-collapse -->
 	  </div>
@@ -208,6 +208,9 @@
 	<script type="text/javascript" src="http://myscope.qiniudn.com/static/js/sonic.js"></script>
 	<script type="text/javascript" src="http://myscope.qiniudn.com/static/js/myjs.0.5.js"></script>
 	<script type="text/javascript" src="http://myscope.qiniudn.com/static/js/prefixfree.min.js"></script>
+	<!--[if lte IE 7]>
+		<script type="text/javascript" src="static/js/ie6.js"></script>
+	<![endif]-->
 	<script>
 		var _hmt = _hmt || [];
 		(function() {
