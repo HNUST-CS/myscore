@@ -228,9 +228,7 @@
     $('#update-bt').click(function() {
       return $('#update-ct').load('update.html');
     });
-    return $('#feedback-bt').click(function() {
-      return $('#feedback-ct').load('feedback.html');
-    });
+    return $('#feedback-bt').click(function() {});
   });
 
 }).call(this);

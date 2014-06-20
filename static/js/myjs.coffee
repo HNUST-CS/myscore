@@ -219,4 +219,4 @@ $(document).ready ->
 		$('#update-ct').load('update.html')
 
 	$('#feedback-bt').click ->
-		$('#feedback-ct').load('feedback.html')
+		#$(circle.canvas).appendTo('#feedback-ct').fadeIn()
