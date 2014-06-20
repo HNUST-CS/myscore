@@ -8,21 +8,18 @@
 		<title>HNUST成绩查询</title>
 		<link rel="stylesheet" type="text/css" href="http://lib.sinaapp.com/js/bootstrap/v3.0.0/css/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="http://myscope.qiniudn.com/static/css/mycss.css">
-		<script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
-		<script type="text/javascript" src="http://lib.sinaapp.com/js/bootstrap/v3.0.0/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="http://myscope.qiniudn.com/static/js/sonic.js"></script>
-		<script type="text/javascript" src="http://myscope.qiniudn.com/static/js/myjs.0.1.js"></script>
-		<script type="text/javascript" src="http://myscope.qiniudn.com/static/js/prefixfree.min.js"></script>
+
 		<!--[if lt IE 9]>
 		<script type="text/javascript" src="http://myscope.qiniudn.com/static/js/respond.js"></script>
 		<script type="text/javascript" src="http://myscope.qiniudn.com/static/js/html5.js"></script>
 		<![endif]-->
-		<!--[if lte IE 6]>
+		<!--[if lt IE 6]>
 	    <link rel="stylesheet" type="text/css" href="http://myscope.qiniudn.com/static/css/bootstrap-ie6.css">
 	    <![endif]-->
-	    <!--[if lte IE 7]>
+	    <!--[if lt IE 7]>
 	    <link rel="stylesheet" type="text/css" href="http://myscope.qiniudn.com/static/css/ie.css">
 	    <![endif]-->
+
 	    <script>
 		var _hmt = _hmt || [];
 		(function() {
@@ -116,38 +113,49 @@
 		</div>
 	</div>
 	<div class='foot hidden-xs'>
-			<div class="rights">
-				<h4>Powered by <a target="_blank" href="http://vgee.sinaapp.com">JailBreak</a> and <a target="_blank" href="http://hi-hi.cn">wkc</a>　<small>2014-6-19</small></h4>
-			</div>
-			<div class="wave">
-				<div id="banner_bolang_bg_1"></div>
-				<div id="banner_bolang_bg_2"></div>
-			</div>
-
+		<div class="rights">
+			<h4>Powered by <a target="_blank" href="http://vgee.sinaapp.com">JailBreak</a> and <a target="_blank" href="http://hi-hi.cn">wkc</a>　<small>2014-6-19</small></h4>
 		</div>
+		<div class="wave">
+			<div id="banner_bolang_bg_1"></div>
+			<div id="banner_bolang_bg_2"></div>
+		</div>
+
+	</div>
+
+
+	<div class="modal fade" id="idcomfirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	    <form>
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 class="modal-title">请输入您的身份证号码</h4>
+	      </div>
+	      <div class="modal-body">
+	      	<div class="form-group">
+	      		<div class="col-xs-8 col-xs-offset-2">
+	        	<input id="sfz-ipt"class="form-control" placeholder="身份证号码" type="text"/>
+	        	</div>
+	        </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	        <button type="submit" id="id-confirm-btn" type="button" class="btn btn-primary">确定</button>
+	      </div>
+	      </form>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+
+
+	<script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="http://lib.sinaapp.com/js/bootstrap/v3.0.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="http://myscope.qiniudn.com/static/js/sonic.js"></script>
+	<script type="text/javascript" src="http://myscope.qiniudn.com/static/js/myjs.0.1.js"></script>
+	<script type="text/javascript" src="http://myscope.qiniudn.com/static/js/prefixfree.min.js"></script>
+
+
 	</body>
 </html>
-
-<div class="modal fade" id="idcomfirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-    <form>
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">请输入您的身份证号码</h4>
-      </div>
-      <div class="modal-body">
-      	<div class="form-group">
-      		<div class="col-xs-8 col-xs-offset-2">
-        	<input id="sfz-ipt"class="form-control" placeholder="身份证号码" type="text"/>
-        	</div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-        <button type="submit" id="id-confirm-btn" type="button" class="btn btn-primary">确定</button>
-      </div>
-      </form>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
