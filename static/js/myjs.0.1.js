@@ -100,6 +100,7 @@
     $('#id-confirm-btn').click(function() {});
     $('#switch').on('click', '.btn', function() {
       var hsClass;
+      checkFailCourse();
       hsClass = $(this).attr('data-tri');
       return $('.score-table tr').show().not('.' + hsClass).hide();
     });
