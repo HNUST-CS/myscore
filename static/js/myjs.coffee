@@ -28,18 +28,15 @@ $(document).ready ->
 			msg_content.eq(t++).text(js['class'])
 			msg_content.eq(t++).text(js['id'])
 		for semester,se of js.detail
-			$('#switch').append('<button id="#{cnt}" class="col-xs-6 col-sm-2 btn btn-primary">#{semester}</button>')
+			$('#switch').append("<button id='"+"#{cnt}"+"' data-tri='"+"#{cnt}"+"' class='col-xs-6 col-sm-2 btn btn-primary'>#{semester}</button>")
 			for i,msg of se
-				console.log msg.title
-				console.log msg.score
-				console.log msg.grade
 				$('#p-score').append("<tr class='#{cnt}'>
 					<td>#{msg.title}</td>
 					<td>#{msg.grade}</td>
 					<td>#{msg.score}</td>
 				</tr>")
 			cnt++;
-		$('#0').click()
+		$('#0').mousedown()
 		$('#p-score tr').not('.'+ 0).hide();
 		checkFailCourse()
 	#清除旧数据
@@ -153,6 +150,7 @@ $(document).ready ->
 				</table>")
 			i++
 		$('.progress').fadeIn()
+		$('#0').click()
 
 	settleClassFile = (js,id)->
 		t = 0;cnt = 0;#<p> 学号：#{id}　姓名：#{js['name']} </p>
@@ -172,7 +170,6 @@ $(document).ready ->
 					<td>#{msg.score}</td>
 				</tr>")
 			cnt++;
-		$('#0').click()
 		$("#p-score-#{id} tr").not('.'+ 0).hide();
 		checkFailCourse();
 
