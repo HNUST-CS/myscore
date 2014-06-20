@@ -126,10 +126,9 @@ $(document).ready ->
 	#处理进度条
 	pwidth = 0
 	settleProgress = ->
-		per = $('.progress').width()/44
-		pwidth += per
-		$('#class-progress').width(pwidth)
-		if pwidth >= $('.progress').width()
+		pwidth += 0.02272727273
+		$('#class-progress').width(pwidth + '%')
+		if pwidth >= 1.0
 			$('.progress').fadeOut ->
 				$('#class-progress').width(0)
 				pwidth = 0
