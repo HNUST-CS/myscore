@@ -130,10 +130,21 @@ $(document).ready ->
 	)
 	circle.play()
 
+	#处理进度条
+	settleProgress = ->
+		per = $('.progress').width()/44
+		pwidth = $('#class-progress').width()
+		pwidth += per
+		$('#class-progress').width(pwidth)
+		if pwidth >= $('.progress').width()
+			$('.progress').fadeOut ->
+				$('#class-progress').width(0)
+
+
 	#处理全班成绩数据
 	init = ->
 		i=1;
-		while i<40  
+		while i<45  
 			if i<10 
 					id = '0' + i
 				else
@@ -144,6 +155,7 @@ $(document).ready ->
 					</tbody>
 				</table>")
 			i++
+		$('.progress').fadeIn()
 
 	settleClassFile = (js,id)->
 		t = 0;cnt = 0;#<p> 学号：#{id}　姓名：#{js['name']} </p>
@@ -177,7 +189,7 @@ $(document).ready ->
 			$('#idcomfirm').modal('hide')
 			init()
 			i = 1
-			while i < 40
+			while i < 45
 				if i<10 
 					stuNo = '0' + i
 				else
@@ -191,7 +203,9 @@ $(document).ready ->
 						'dataType':'json'
 						'success':(result) ->
 							settleClassFile result,stuNo
+							settleProgress()
 						'error':(a,b,c)->
+							settleProgress()
 				i++
 			checkFailCourse()
 		else
@@ -200,3 +214,9 @@ $(document).ready ->
 
 	$('input').keydown ->
 		$(this).removeClass('has-error')
+
+	$('#update-bt').click ->
+		$('#update-ct').load('update.html')
+
+	$('#feedback-bt').click ->
+		$('#feedback-ct').load('feedback.html')
