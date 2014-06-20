@@ -65,7 +65,7 @@ h1,h2,h3,h4,h5,h6{
 	color: white;
 }
 .score-show-box{
-	/*display: none;*/
+	display: none;
 	margin-top: 110px;
 	border: solid 1px;
 	border-radius: 17px;
