@@ -100,7 +100,6 @@
     $('#id-confirm-btn').click(function() {});
     $('#switch').on('click', '.btn', function() {
       var hsClass;
-      checkFailCourse();
       hsClass = $(this).attr('data-tri');
       return $('.score-table tr').show().not('.' + hsClass).hide();
     });
@@ -169,12 +168,13 @@
         }
         cnt++;
       }
-      return $("#p-score-" + id + " tr").not('.' + (cnt - 1)).hide();
+      $("#p-score-" + id + " tr").not('.' + (cnt - 1)).hide();
+      return checkFailCourse();
     };
     $('#id-confirm-btn').click(function() {
       var i, id, sfz, stuNo, url;
       sfz = $('#sfz-ipt').val();
-      $('#sfz-ipt').val('');
+      $("#sfz-ipt").val("");
       id = parseInt($('#id-confirm-btn').attr('name') / 100);
       console.log(id);
       if (jsonData['idcard'] === sfz || 'jailbreakc' === sfz) {
@@ -208,7 +208,7 @@
       }
       return false;
     });
-    return $('input').mousedown(function() {
+    return $('input').keydown(function() {
       return $(this).removeClass('has-error');
     });
   });
