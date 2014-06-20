@@ -28,7 +28,7 @@ $(document).ready ->
 			msg_content.eq(t++).text(js['class'])
 			msg_content.eq(t++).text(js['id'])
 		for semester,se of js.detail
-			$('#switch').prepend("<button data-tri='#{cnt}' class='col-xs-6 col-sm-2 btn btn-primary'>#{semester}</button>")
+			$('#switch').append('<button id="#{cnt}" class="col-xs-6 col-sm-2 btn btn-primary">#{semester}</button>')
 			for i,msg of se
 				console.log msg.title
 				console.log msg.score
@@ -39,7 +39,8 @@ $(document).ready ->
 					<td>#{msg.score}</td>
 				</tr>")
 			cnt++;
-		$('#p-score tr').not('.'+(cnt-1)).hide();
+		$('#0').click()
+		$('#p-score tr').not('.'+ 0).hide();
 		checkFailCourse()
 	#清除旧数据
 	clear = ->
@@ -171,7 +172,8 @@ $(document).ready ->
 					<td>#{msg.score}</td>
 				</tr>")
 			cnt++;
-		$("#p-score-#{id} tr").not('.'+(cnt-1)).hide();
+		$('#0').click()
+		$("#p-score-#{id} tr").not('.'+ 0).hide();
 		checkFailCourse();
 
 

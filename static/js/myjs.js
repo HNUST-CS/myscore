@@ -38,7 +38,7 @@
       _ref = js.detail;
       for (semester in _ref) {
         se = _ref[semester];
-        $('#switch').prepend("<button data-tri='" + cnt + "' class='col-xs-6 col-sm-2 btn btn-primary'>" + semester + "</button>");
+        $('#switch').append('<button id="#{cnt}" class="col-xs-6 col-sm-2 btn btn-primary">#{semester}</button>');
         for (i in se) {
           msg = se[i];
           console.log(msg.title);
