@@ -4,7 +4,7 @@ import urllib2,re,json
 from collections import OrderedDict
 
 def getStatus():
-    if len(urllib2.urlopen('http://127.0.0.1:2222/').read())>100: return "{'status':true}"
+    if len(urllib2.urlopen('http://127.0.0.1:2222/',timeout=2).read())>100: return "{'status':true}"
     return "{'status':false}"
 
 def getScore(id):
@@ -15,7 +15,7 @@ def getScore(id):
     if id[2]=='5': url = 'http://127.0.0.1:2222/xxjw/xscjcx.jsp?yzbh='
     else: url = 'http://127.0.0.1:2222/kdjw/xscjcx.jsp?yzbh='
     try:
-        html=urllib2.urlopen(url+str(id)).read()
+        html=urllib2.urlopen(url+str(id),timeout=5).read()
         if len(html)<100 : return u"{'error':true,'msg':'内网服务器脱机'}"
         sel=selector.Selector(text=html)
     except Exception,e:
