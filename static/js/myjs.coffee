@@ -214,3 +214,6 @@ $(document).ready ->
 
 	$('#feedback-bt').click ->
 		#$(circle.canvas).appendTo('#feedback-ct').fadeIn()
+	$('#share-btn').click ->
+		$(this).fadeOut 'fast', ->
+			$('#ckepop').fadeIn 'fast'
