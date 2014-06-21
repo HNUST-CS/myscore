@@ -152,14 +152,14 @@ $(document).ready ->
 		$('#0').click()
 
 	settleClassFile = (js,id)->
-		t = 0;cnt = 0;#<p> 学号：#{id}　姓名：#{js['name']} </p>
+		t = 0;cnt = 0;
 		$("#p-score-#{id}").append("
 				<tr class='0 1 2 3 4 5 6 7 8'>
 					<th>课程</th>
 					<th>学分</th>
 					<th>成绩</th>
 				</tr>")
-		$("#p-score-#{id}").parent('table').before("<p> 学号：#{id}　姓名：#{js['name']} </p>")
+		$("#p-score-#{id}").parent('table').before("<button class='btn btn-success btn-xs no-radius'> 学号：#{id}　姓名：#{js['name']} </button> </p>")
 		for semester,se of js.detail
 			console.log semester
 			for i,msg of se
