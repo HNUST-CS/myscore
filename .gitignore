@@ -1,0 +1,8 @@
+/*.pyc
+/myscore.log
+/crawler/yacctab.py
+/crawler/lextab.py
+/server/*.pyc
+/db
+*.pyc
+/server/*.log
