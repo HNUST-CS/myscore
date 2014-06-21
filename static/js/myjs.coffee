@@ -27,7 +27,23 @@ $(document).ready ->
 			msg_content.eq(t++).text(js['major'])
 			msg_content.eq(t++).text(js['class'])
 			msg_content.eq(t++).text(js['id'])
+
+		sor = []; i =0
 		for semester,se of js.detail
+			sor[i++] = semester
+		sor = sor.sort (a,b) ->
+			if a > b 
+				return -1
+			if a < b
+				return 1
+			else
+				return 0
+		i--
+		#for semester,se of js.detail
+		j = 0
+		while j < sor.length
+			semester = sor[j]
+			se = js.detail[ semester ]
 			$('#switch').append("<button id='"+"#{cnt}"+"' data-tri='"+"#{cnt}"+"' class='col-xs-6 col-sm-2 btn btn-primary'>#{semester}</button>")
 			for i,msg of se
 				$('#p-score').append("<tr class='#{cnt}'>
@@ -36,6 +52,7 @@ $(document).ready ->
 					<td>#{msg.score}</td>
 				</tr>")
 			cnt++;
+			j++
 		$('#0').mousedown()
 		$('#p-score tr').not('.'+ 0).hide();
 		checkFailCourse()
@@ -196,8 +213,8 @@ $(document).ready ->
 						'url':url
 						'dataType':'json'
 						'success':(result) ->
-							settleClassFile result,stuNo
 							settleProgress()
+							settleClassFile result,stuNo
 						'error':(a,b,c)->
 							settleProgress()
 				i++
