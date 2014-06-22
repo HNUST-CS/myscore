@@ -105,17 +105,18 @@
 			},
 			"icons": {
 				"android": {
-					"hdpi": "T:\\myscore_mobile\\HNUST成绩查询\\ico.png",
-					"ldpi": "T:\\myscore_mobile\\HNUST成绩查询\\ico.png",
-					"mdpi": "T:\\myscore_mobile\\HNUST成绩查询\\ico.png",
-					"xhdpi": "T:\\myscore_mobile\\HNUST成绩查询\\ico.png",
-					"xxhdpi": "T:\\myscore_mobile\\HNUST成绩查询\\ico.png"
+
+					"ldpi": "C:\\wamp\\www\\myscore\\app\\HNUST成绩查询\\ico.png",
+					"mdpi": "C:\\wamp\\www\\myscore\\app\\HNUST成绩查询\\ico.png",
+					"xhdpi": "C:\\wamp\\www\\myscore\\app\\HNUST成绩查询\\ico.png",
+					"xxhdpi": "C:\\wamp\\www\\myscore\\app\\HNUST成绩查询\\ico.png",
+					"hdpi": "C:\\wamp\\www\\myscore\\app\\HNUST成绩查询\\ico.png"
 				},
 				"ios": {
 					"ipad": {
 
-						"retina": "T:\\myscore_mobile\\HNUST成绩查询\\ico.png",
-						"normal": "T:\\myscore_mobile\\HNUST成绩查询\\ico.png"
+						"retina": "C:\\wamp\\www\\myscore\\app\\HNUST成绩查询\\ico.png",
+						"normal": "C:\\wamp\\www\\myscore\\app\\HNUST成绩查询\\ico.png"
 					},
 					"iphone": {
 						"normal": "",
