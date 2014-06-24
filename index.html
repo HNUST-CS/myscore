@@ -5,7 +5,7 @@
 		
 		<meta property="wb:webmaster" content="dd48a0779326e74d" />
 		<meta name="keywords" content="湖南科技大学成绩查询,科大成绩查询,HNUST成绩查询,湖南科大成绩查询,成绩查询,湖南科技大学,湖南科技大学教务处,湖南科技大学信息门户,HNUST">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge"><!--IE-->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"><!--强制使用IE最新版本渲染-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		 <link rel="icon" href="static/images/ico_logo.ico" type="image/gif" sizes="16x16" />
 		<title>HNUST成绩查询</title>
@@ -14,15 +14,10 @@
 		<script type="text/javascript" charset="utf-8">
 			//if (document.URL.slice(0, 4) != 'http') {document.write('<base href="http://cj.vgee.cn"/>');}
 		</script>
-		<!--[if lte IE 9]>
-		<script type="text/javascript" src="http://myscope.qiniudn.com/static/js/respond.js"></script>
-		<script type="text/javascript" src="http://myscope.qiniudn.com/static/js/html5.js"></script>
-		<![endif]-->
-
-		
-
-	    <!--[if lte IE 7]>
-	    <link rel="stylesheet" type="text/css" href="http://myscope.qiniudn.com/static/css/ie.css">
+	    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	    <!--[if lt IE 9]>
+	      <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
+	      <script src="static/js/respond.js"></script>
 	    <![endif]-->
 
 	    
@@ -47,6 +42,9 @@
 
 	  <!-- Collect the nav links, forms, and other content for toggling -->
 	  <div class="collapse navbar-collapse" id="collapse-1">
+	  	<ul class="nav navbar-nav">
+	  		<li><a target="_blank" href="http://www1.hnust.cn/2013_2014.mht">校历查询</a></li>
+	  	</ul>
 	    <ul class="nav navbar-nav navbar-right">
 	      <li><a target="_blank" href="https://github.com/wangkechun/myscore">View on GitHub</a></li>
 	      <li><a id="update-bt" data-toggle="modal" data-target="#update" href="">更新日志</a></li>
@@ -223,6 +221,7 @@
 	     </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
+
 	<!-- ********************************************* 模态框专用沙发 *********************************************** -->
 
 	<script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
