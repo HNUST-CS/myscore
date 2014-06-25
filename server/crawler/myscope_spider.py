@@ -29,7 +29,7 @@ class myscopeSpider3(CrawlSpider):
     allowed_domains = ["*"]
 
     def trans_url(id):
-        if id[2]=='5': return 'http://211.67.208.67/xxjw/xscjcx.jsp?yzbh='+id
+        if id[2]=='5' or id[2]=='6': return 'http://211.67.208.67/xxjw/xscjcx.jsp?yzbh='+id
         else: return 'http://211.67.208.69/kdjw/xscjcx.jsp?yzbh='+id
 
     start_urls = [trans_url(id) for id in open("id_list.txt").read().split()]

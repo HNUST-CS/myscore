@@ -17,7 +17,7 @@ def getScore(id):
     id=str(id)
     dic = MYSCOPE_DB.find_one({'id':id},{'_id':0})
     if not dic : return "{'status':false}"
-    if  (datetime.datetime.now()-dic['datetime']).total_seconds() > 24*3600 : return getScoreByWeb(id)
+    # if  (datetime.datetime.now()-dic['datetime']).total_seconds() > 24*3600 : return getScoreByWeb(id)
     dic['from'] = 'mongodb'
     dic['datetime'] = dic['datetime'].isoformat()
     return json.dumps(dic,ensure_ascii=False,indent=None,encoding='UTF8')
@@ -27,7 +27,7 @@ def getScoreByWeb(id):
     id=str(id)
     # if id[2]=='5': url = 'http://211.67.208.67/xxjw/xscjcx.jsp?yzbh='
     # else: url = 'http://211.67.208.69/kdjw/xscjcx.jsp?yzbh='
-    if id[2]=='5': url = 'http://127.0.0.1:2222/xxjw/xscjcx.jsp?yzbh='
+    if id[2]=='5' or id[2]=='6': url = 'http://127.0.0.1:2222/xxjw/xscjcx.jsp?yzbh='
     else: url = 'http://127.0.0.1:2222/kdjw/xscjcx.jsp?yzbh='
     try:
         html=urllib2.urlopen(url+str(id),timeout=5).read()
@@ -36,7 +36,6 @@ def getScoreByWeb(id):
         return u"{'error':true,'msg':'服务器加载数据失败'}"
 
     dic = htmlToJson.htmlToJson(html)
-    import pdb;pdb.set_trace()    
     MYSCOPE_DB.save(dic)
     del dic['_id']
     dic['from'] = 'web'
