@@ -38,7 +38,7 @@ def buy():
     return send_file('360buy-union.txt')
 
 @app.route('/root.txt')
-def buy():
+def taobao():
     return send_file('root.txt')
 
 
