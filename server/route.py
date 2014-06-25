@@ -36,7 +36,6 @@ def getScoreByWeb(id):
         return u"{'error':true,'msg':'服务器加载数据失败'}"
 
     dic = htmlToJson.htmlToJson(html)
-    import pdb;pdb.set_trace()    
     MYSCOPE_DB.save(dic)
     del dic['_id']
     dic['from'] = 'web'
