@@ -27,7 +27,7 @@ def getScoreByWeb(id):
     id=str(id)
     # if id[2]=='5': url = 'http://211.67.208.67/xxjw/xscjcx.jsp?yzbh='
     # else: url = 'http://211.67.208.69/kdjw/xscjcx.jsp?yzbh='
-    if id[2]=='5': url = 'http://127.0.0.1:2222/xxjw/xscjcx.jsp?yzbh='
+    if id[2]=='5' or id[2]=='6': url = 'http://127.0.0.1:2222/xxjw/xscjcx.jsp?yzbh='
     else: url = 'http://127.0.0.1:2222/kdjw/xscjcx.jsp?yzbh='
     try:
         html=urllib2.urlopen(url+str(id),timeout=5).read()
