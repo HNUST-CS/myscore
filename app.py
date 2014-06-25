@@ -37,6 +37,11 @@ def index():
 def buy():
     return send_file('360buy-union.txt')
 
+@app.route('/root.txt')
+def buy():
+    return send_file('root.txt')
+
+
 if __name__ == '__main__':
     app.run(debug=True,use_debugger=True,host='0.0.0.0',port=3000)
     # app.run(debug=False,use_debugger=False,host='0.0.0.0',port=3000)
