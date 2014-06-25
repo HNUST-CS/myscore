@@ -17,7 +17,7 @@ def getScore(id):
     id=str(id)
     dic = MYSCOPE_DB.find_one({'id':id},{'_id':0})
     if not dic : return "{'status':false}"
-    if  (datetime.datetime.now()-dic['datetime']).total_seconds() > 24*3600 : return getScoreByWeb(id)
+    # if  (datetime.datetime.now()-dic['datetime']).total_seconds() > 24*3600 : return getScoreByWeb(id)
     dic['from'] = 'mongodb'
     dic['datetime'] = dic['datetime'].isoformat()
     return json.dumps(dic,ensure_ascii=False,indent=None,encoding='UTF8')
