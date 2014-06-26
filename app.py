@@ -42,6 +42,13 @@ def taobao():
     return send_file('root.txt')
 
 
+
+@app.route('/bdunion.txt')
+def baidu():
+    return send_file('bdunion.txt')
+
+
+
 if __name__ == '__main__':
     app.run(debug=True,use_debugger=True,host='0.0.0.0',port=3000)
     # app.run(debug=False,use_debugger=False,host='0.0.0.0',port=3000)
