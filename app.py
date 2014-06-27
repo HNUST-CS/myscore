@@ -48,6 +48,14 @@ def baidu():
     return send_file('bdunion.txt')
 
 
+@app.route('/api/verifycode/kdjw')
+def get_session():
+    return route.get_session('kdjw')
+
+@app.route('/api/verifycode/kdjw')
+def get_session2():
+    return route.get_session('xxjw')
+
 
 if __name__ == '__main__':
     app.run(debug=True,use_debugger=True,host='0.0.0.0',port=3000)
