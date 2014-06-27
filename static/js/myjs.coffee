@@ -1,4 +1,11 @@
 dynamicWebService = '.'
+
+$('#input1').click ->
+	$('.verif').slideDown('fast')
+
+$('#update-bt').click ->
+	$('#update-ct').load('static/update.html')
+
 $(document).ready ->
 	jsonData = ''
 	#给不及格科目加红框
@@ -71,7 +78,7 @@ $(document).ready ->
 	$('#search-btn').click ->
 		number = $('#input1').val()
 		if number is ''
-			$('#input1').addClass('has-error')
+			$("#input1,#sfz-4").addClass('has-error')
 			return false
 		$(circle.canvas).appendTo('#score-search-box').fadeIn()
 		setPosition()
@@ -89,6 +96,7 @@ $(document).ready ->
 				jsonData = result
 				settleFile result,number
 				$('.jumbotron').slideUp()
+				$('.verif').slideUp()
 				$('.score-show-box').fadeIn()
 				$('#class_score').attr('disabled',false)
 				$('.sonic').fadeOut();
@@ -226,8 +234,7 @@ $(document).ready ->
 	$('input').keydown ->
 		$(this).removeClass('has-error')
 
-	$('#update-bt').click ->
-		$('#update-ct').load('static/update.html')
+
 
 	$('#feedback-bt').click ->
 		#$(circle.canvas).appendTo('#feedback-ct').fadeIn()
