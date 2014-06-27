@@ -39,6 +39,7 @@ class myscopeSpider3(CrawlSpider):
         html = response.body_as_unicode()
         try:
             js = htmlToJson.htmlToJson(html)
+#            import ipdb;ipdb.set_trace()
             MYSCOPE_DB.save(js)
         except :
             pass
