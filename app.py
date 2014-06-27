@@ -33,6 +33,22 @@ def index():
     # import ipdb;ipdb.set_trace()    
     return send_file('index.html')
 
+@app.route('/360buy-union.txt')
+def buy():
+    return send_file('360buy-union.txt')
+
+@app.route('/root.txt')
+def taobao():
+    return send_file('root.txt')
+
+
+
+@app.route('/bdunion.txt')
+def baidu():
+    return send_file('bdunion.txt')
+
+
+
 if __name__ == '__main__':
     app.run(debug=True,use_debugger=True,host='0.0.0.0',port=3000)
     # app.run(debug=False,use_debugger=False,host='0.0.0.0',port=3000)
