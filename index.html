@@ -10,7 +10,7 @@
 		 <link rel="icon" href="static/images/ico_logo.ico" type="image/gif" sizes="16x16" />
 		<title>HNUST成绩查询</title>
 		<link rel="stylesheet" type="text/css" href="http://lib.sinaapp.com/js/bootstrap/v3.0.0/css/bootstrap.css">
-		<link rel="stylesheet" type="text/css" href="http://myscope.qiniudn.com/static/css/mycss-5e8b65fcaa10084c741f76fe0f669849.css">
+		<link rel="stylesheet" type="text/css" href="http://myscope.qiniudn.com/static/css/mycss-e6afd65dea3a3b19fe104e0b8e8e8b8f.css">
 		<script type="text/javascript" charset="utf-8">
 			//if (document.URL.slice(0, 4) != 'http') {document.write('<base href="http://cj.vgee.cn"/>');}
 		</script>
@@ -24,9 +24,23 @@
 
 
 	</head>
-
 	<body>
-	
+	<div class="sorry">
+	<div class="centerPhoto">
+	</div>
+		<div class="row">
+			<div class="say col-xs-12">
+
+				<h1 id="sor-text">Sorry，由于政策原因本站暂时关闭。</h1>
+			</div>
+		</div>
+	</div>
+	<div class="s-foot">
+		<div class="rights">
+			<h4>Powered by <a target="_blank" href="http://vgee.sinaapp.com">JailBreak</a> and <a target="_blank" href="http://hi-hi.cn">wkc</a>　<small><a href="#" data-keyboard="false" data-toggle="modal" data-target="#feedback">留言</a></small></h4>
+		</div>
+	</div>
+	<div style="display:none">
 	<nav class="navbar navbar-inverse" role="navigation">
 	  <!-- Brand and toggle get grouped for better mobile display -->
 	  <div class="container">
@@ -96,7 +110,7 @@
 			<h4>个人信息</h4>
 			<button id="share-btn" class="pull-right btn btn-xs btn-success">分享一下吧（不显示成绩）</button>
 
-			<!-- 分享按钮区域 -->
+			<!-- 分享按钮区域 
 			<div style="display:none" id="ckepop" class="pull-right">
 			<span class="jiathis_txt"><wb:share-button appkey="6Jw1UN" addition="simple" type="button" default_text="分享给科大同学一个非常好用的成绩查询网站。手机，电脑查询都很方便，还可以查询全班成绩哟。赶快收藏吧~" pic="http%3A%2F%2F5.vgee.sinaapp.com%2Fimg%2FweiboShare1.jpg||http%3A%2F%2F5.vgee.sinaapp.com%2Fimg%2FweiboShare2.jpg" ralateUid="2878776460"></wb:share-button></span>
 			<a class="jiathis_button_qzone">QQ空间</a>
@@ -104,7 +118,7 @@
 			<a class="jiathis_counter_style"></a>
 			</div>
 			<script type="text/javascript" src="http://v2.jiathis.com/code/jia.js" charset="utf-8"></script>
-			<!-- 分享按钮区域 end -->
+			 分享按钮区域 end -->
 
 			<table id="p-msg" class="table table-striped table-hover table-bordered">
 				<tr>
@@ -159,6 +173,7 @@
 		</div>
 
 	</div>
+	</div> <!-- hidden -->
 
 	<!-- ********************************************* 模态框专用沙发 *********************************************** -->
 	<div class="modal fade" id="idcomfirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -213,12 +228,12 @@
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
 
-	<div class="modal fade" id="feedback" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div sytle="z-index:100"class="modal fade" id="feedback" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	        <h4 class="modal-title">问题反馈</h4>
+	        <h4 class="modal-title">留言板</h4>
 	      </div>
 	      <div id="feedback-ct"class="modal-body">
 	      	<!-- 多说评论框 start -->
@@ -249,9 +264,10 @@
 	<!-- ********************************************* 模态框专用沙发 *********************************************** -->
 
 	<script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="static/js/jquery-ui-1.10.4.custom.js"></script>
 	<script type="text/javascript" src="http://lib.sinaapp.com/js/bootstrap/v3.0.0/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="http://myscope.qiniudn.com/static/js/sonic.js"></script>
-	<script type="text/javascript" src="http://myscope.qiniudn.com/static/js/myjs-747c984e0ecf30965e7b75256cafda2a.js"></script>
+	<script type="text/javascript" src="http://myscope.qiniudn.com/static/js/myjs-31e98b5deb0bf1072350874b2e1c74f5.js"></script>
 	<script type="text/javascript" src="http://myscope.qiniudn.com/static/js/prefixfree.min.js"></script>
 	<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
 	<!--[if lte IE 7]>
@@ -266,6 +282,5 @@
 		  s.parentNode.insertBefore(hm, s);
 		})();
 	</script>
-
 	</body>
 </html>
