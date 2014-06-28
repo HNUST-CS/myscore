@@ -267,7 +267,7 @@ $(document).ready ->
 	  	'PS-2：其实他们这样从技术上还是挡不住我们的，不过。。。',
 	  	'-----END-----',
 	  ]
-	cnt=0#用来计数m
+	cnt=-1#用来计数m
 	max=doc.length
 	change = ->#切换背景颜色和主页文字
 		cnt++;
@@ -276,5 +276,5 @@ $(document).ready ->
 		).fadeIn('slow');#文字切换
 		
 		$('.sorry').animate({backgroundColor: addcolors[(cnt-1)%7]});#背景颜色切换
-
+		
 	setInterval change,4000
