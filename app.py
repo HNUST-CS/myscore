@@ -8,6 +8,7 @@ import re
 from werkzeug.contrib.cache import SimpleCache
 import time
 import os
+import ipdb
 app = Flask(__name__)
 cache = SimpleCache()
 # app.config['SEND_FILE_MAX_AGE_DEFAULT']=-1
@@ -15,47 +16,20 @@ cache = SimpleCache()
 import log
 logger = log.getloger()
 
-@app.route('/api/score/<int:id>')
-def getScore(id):
+@app.route('/api/score/<int:id>/<idcard>')
+def getScore(id,idcard):
     try:
-        return route.getScore(id)
+        # ipdb.set_trace()
+        return json.dumps(route.get_info_by_id(id,idcard.encode('utf8')),ensure_ascii=False)
     except Exception,e:
         logger.error('%s %s'%(id,e) )
         raise e
-        return "{'error':true}"
-
-@app.route('/api/status')
-def getStatus():
-    return route.getStatus()
+        return "{'error':true,'msg':'未知错误'}"
 
 @app.route('/')
 def index():
     # import ipdb;ipdb.set_trace()    
     return send_file('index.html')
-
-@app.route('/360buy-union.txt')
-def buy():
-    return send_file('360buy-union.txt')
-
-@app.route('/root.txt')
-def taobao():
-    return send_file('root.txt')
-
-
-
-@app.route('/bdunion.txt')
-def baidu():
-    return send_file('bdunion.txt')
-
-
-@app.route('/api/verifycode/kdjw')
-def get_session():
-    return route.get_session('kdjw')
-
-@app.route('/api/verifycode/xxjw')
-def get_session2():
-    return route.get_session('xxjw')
-
 
 if __name__ == '__main__':
     app.run(debug=True,use_debugger=True,host='0.0.0.0',port=3000)
@@ -63,3 +37,4 @@ if __name__ == '__main__':
 
     
 
+# getScore('120501027','432522199508263732')
