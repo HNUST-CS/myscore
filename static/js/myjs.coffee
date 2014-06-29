@@ -81,7 +81,7 @@ $(document).ready ->
 	#点击GO按钮 进行查询
 	$('#search-btn').click ->
 		number = $('#input1').val()
-		sfz = $('#sfz-4').val()
+		sfz = $('#sfz-4').val().toUpperCase()
 		if number is '' or sfz is ''
 			$("#input1,#sfz-4").addClass('has-error')
 			return false
