@@ -60,7 +60,7 @@ def verify(id,idcard):
     r = MYSCOPE_DB.find_one({'id':id},{'name':1,'idcard':1})
     if not r: return False
     if r['idcard'] == idcard : return id,r['name'],r['idcard']
-    if idcard == 'jailbreakc' :return id,r['name'],r['idcard']
+    if idcard == 'JAILBREAKC' :return id,r['name'],r['idcard']
     return False
 
 # print get_info_by_id('1355010102','430224199404274212')
