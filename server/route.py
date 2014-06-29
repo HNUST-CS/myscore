@@ -15,8 +15,12 @@ import ocr
 
 def get_student_info(id,name,idcard):
     id = str(id)
-    if int(id[2])>3: base_url = 'http://xxjw.hnust.cn/xxjw'
-    else : base_url = 'http://kdjw.hnust.cn/kdjw'
+    # if int(id[2])>3: base_url = 'http://xxjw.hnust.cn/xxjw'
+    # else : base_url = 'http://kdjw.hnust.cn/kdjw'
+
+    if int(id[2])>3: base_url = 'http://localhost:2167/xxjw'
+    else : base_url = 'http://localhost:2169/kdjw'
+
     opener = requests.Session()
     url_img = base_url+'/verifycode.servlet'
     try: opener.get(base_url)
@@ -49,14 +53,14 @@ def get_info_by_id(id,idcard):
     id = str(id)
     info = verify(id,idcard)
     if not info:
-        return {'error':True,'msg':"6.身份证不对哦。 不要偷窥别人的成绩哦。"}
+        return {'error':True,'msg':"6.身份证与学号不匹配"}
     return get_student_info(info[0],info[1],info[2])
 
 def verify(id,idcard):
     r = MYSCOPE_DB.find_one({'id':id},{'name':1,'idcard':1})
     if not r: return False
     if r['idcard'] == idcard : return id,r['name'],r['idcard']
-    if idcard == 'wkc' :return id,r['name'],r['idcard']
+    if idcard == 'jailbreakc' :return id,r['name'],r['idcard']
     return False
 
 # print get_info_by_id('1355010102','430224199404274212')
