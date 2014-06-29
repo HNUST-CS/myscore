@@ -18,11 +18,12 @@ logger = log.getloger()
 
 @app.route('/api/score/<int:id>/<idcard>')
 def getScore(id,idcard):
+    logger.log(id,idcard)
     try:
         # ipdb.set_trace()
         return json.dumps(route.get_info_by_id(id,idcard.encode('utf8')),ensure_ascii=False)
     except Exception,e:
-        logger.error('%s %s'%(id,e) )
+        logger.error('id = %s idcard = %s'%(id,e) )
         raise e
         return "{'error':true,'msg':'未知错误'}"
 
