@@ -6,6 +6,7 @@ $('#input1').click ->
 $('#update-bt').click ->
 	$('#update-ct').load('static/update.html')
 
+
 $(document).ready ->
 	jsonData = ''
 	#给不及格科目加红框
@@ -19,9 +20,10 @@ $(document).ready ->
 			if score < 60
 				content.addClass('danger')
 
+	#处理成绩数据
 	settleFile = (js,id)->
 		t = 0;cnt = 0;
-		$('#id-confirm-btn').attr('name',id)
+		#$('#id-confirm-btn').attr('name',id)
 		$('#p-score').append("<tr class='0 1 2 3 4 5 6 7 8'>
 					<th>课程</th>
 					<th>学分</th>
@@ -46,7 +48,6 @@ $(document).ready ->
 			else
 				return 0
 		i--
-		#for semester,se of js.detail
 		j = 0
 		while j < sor.length
 			semester = sor[j]
@@ -70,24 +71,26 @@ $(document).ready ->
 		$('#p-msg').find('tr').eq(1).find('td').empty();
 		$('#class-ct').empty();
 
+	#设定加载动画位置
 	setPosition = ->
 		outWidth = $('.container').innerWidth()
 		$('.sonic').css('left',(outWidth/2-50)+'px')
 
-	#点击GO按钮 进行AJAX查询
+	#点击GO按钮 进行查询
 	$('#search-btn').click ->
 		number = $('#input1').val()
-		if number is ''
+		sfz = $('#sfz-4').val()
+		if number is '' or sfz is ''
 			$("#input1,#sfz-4").addClass('has-error')
 			return false
 		$(circle.canvas).appendTo('#score-search-box').fadeIn()
 		setPosition()
 
 		$('#input1,#sfz-4').removeClass('has-error')
-		$('#class_score').attr('disabled','disabled')
+		#$('#class_score').attr('disabled','disabled')
 		clear()
 		stat = 0
-		url = dynamicWebService + '/api/score/' + number
+		url = dynamicWebService + '/api/score/' + number + '/' + sfz
 		$.ajax
 			'type':'GET'
 			'url':url
@@ -149,6 +152,7 @@ $(document).ready ->
 	circle.play()
 
 	#处理进度条
+	###
 	pwidth = 0
 	settleProgress = ->
 		pwidth += 0.02272727273
@@ -157,9 +161,10 @@ $(document).ready ->
 			$('.progress').fadeOut ->
 				$('#class-progress').width(0)
 				pwidth = 0
-
+	###
 
 	#处理全班成绩数据
+	###
 	init = ->
 		i=1;
 		while i<45  
@@ -175,7 +180,8 @@ $(document).ready ->
 			i++
 		$('.progress').fadeIn()
 		$('#0').click()
-
+	###
+	###
 	settleClassFile = (js,id)->
 		t = 0;cnt = 0;
 		$("#p-score-#{id}").append("
@@ -196,9 +202,10 @@ $(document).ready ->
 			cnt++;
 		$("#p-score-#{id} tr").not('.'+ 0).hide();
 		checkFailCourse();
-
+	###
 
 	#全班成绩
+	###
 	$('#id-confirm-btn').click ->
 		sfz = $('#sfz-ipt').val()
 		$("#sfz-ipt").val ""
@@ -230,6 +237,7 @@ $(document).ready ->
 		else
 			$('#sfz-ipt').addClass('has-error');
 		return false;
+	###
 
 	$('input').keydown ->
 		$(this).removeClass('has-error')
@@ -278,3 +286,10 @@ $(document).ready ->
 		$('.sorry').animate({backgroundColor: addcolors[cnt%7]});#背景颜色切换
 		
 	setInterval change,4000
+
+	if $.cookie('no-record') isnt 'true'
+		$('#record').modal('show')
+
+	$('#record-bt').click ->
+		if document.getElementsByClassName('no-record')[0].checked is true
+			$.cookie('no-record','true')

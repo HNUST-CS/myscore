@@ -53,7 +53,7 @@
 	</nav>
 	<div class="jumbotron">
 	<div class="container">
-	  <h1>成绩查询<small>FOR湖南科技大学 </small><span class="badge">1.4</span></h1> 
+	  <h1>成绩查询<small>FOR湖南科技大学 </small><span class="badge">2.0</span></h1> 
 	</div>
 	</div>
 	<div class="container">
@@ -75,12 +75,7 @@
 					    <div class="form-inline">
 					    	<div class="form-group">
 					    		<label class="sr-only" for="sfz-4">sfz</label>
-							    <input type="text" class="form-control" id="sfz-4" placeholder="身份证后四位">
-							</div>
-
-					    	<div class="form-group">
-					    		<label class="sr-only" for="yzm">yzm</label>
-							    <input type="text" class="form-control" id="yzm" placeholder="验证码">
+							    <input type="text" class="form-control" id="sfz-4" placeholder="身份证号码">
 							</div>
 					  	</div>
 					  </div>
@@ -93,7 +88,7 @@
 			<h4>个人信息</h4>
 			<button id="share-btn" class="pull-right btn btn-xs btn-success">分享一下吧（不显示成绩）</button>
 
-			<!-- 分享按钮区域 
+			<!-- 分享按钮区域 -->
 			<div style="display:none" id="ckepop" class="pull-right">
 			<span class="jiathis_txt"><wb:share-button appkey="6Jw1UN" addition="simple" type="button" default_text="分享给科大同学一个非常好用的成绩查询网站。手机，电脑查询都很方便，还可以查询全班成绩哟。赶快收藏吧~" pic="http%3A%2F%2F5.vgee.sinaapp.com%2Fimg%2FweiboShare1.jpg||http%3A%2F%2F5.vgee.sinaapp.com%2Fimg%2FweiboShare2.jpg" ralateUid="2878776460"></wb:share-button></span>
 			<a class="jiathis_button_qzone">QQ空间</a>
@@ -101,7 +96,7 @@
 			<a class="jiathis_counter_style"></a>
 			</div>
 			<script type="text/javascript" src="http://v2.jiathis.com/code/jia.js" charset="utf-8"></script>
-			 分享按钮区域 end -->
+			<!-- 分享按钮区域 end -->
 
 			<table id="p-msg" class="table table-striped table-hover table-bordered">
 				<tr>
@@ -122,7 +117,6 @@
 			<div id="switch">
 				
 			</div>
-			<botton  id="class_score" data-toggle="modal" data-target="#record" class="col-xs-12 col-sm-3 pull-right btn btn-warning">查看全班成绩</botton>
 			<div class="col-xs-12 pull-right">
 			<div  style="display: none" class="progress progress-striped active">
 			  <div id="class-progress" class="progress-bar col-xs-12"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
@@ -164,17 +158,36 @@
 	    <form>
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	        <h4 class="modal-title">特别声明</h4>
+	        <h4 style="color:#b94a48"class="modal-title"><b>特别声明</b></h4>
 	      </div>
 	      <div class="modal-body">
-	      	<div class="alert alert-danger" role="alert">
+	      	<div style="font-size: 16px;"class="alert alert-danger" role="alert">
+	      	<strong>
+	      	致歉：</br>
+	      	我们修改了之前的无验证查询方式。</br>
+	      	如果之前的方式侵害了您的隐私，我们在这里对您致以诚挚的歉意。</br></br>
 
+	      	声明：</br>
+	      	本站绝不会储存和收集任何学生个人信息，只是对教务网查询入口做了转发。</br>
+	      	本站没有任何盈利渠道，服务器和流量费用全部自掏腰包。只是为了方便同学们查询成绩。</br>
+	      	本站只是对教务网查询成绩功能做了优化，并无任何和教务网对抗之意。</br>
+	      	在本站内保证只能通过学号和身份证号唯一标识获取成绩。</br>
+	      	本站无数据库！</br></br>
+
+	      	用户须知：</br>
+	      	本网站的稳定性取决于教务网，如果教务网在内网无法访问，本站也会出现问题。</br>
+	      	如果任何人通过其他手段在本站外获得了您的身份证号码，本站概不负责。</br>
+	      	</strong>
 	      	</div>
 	      </div>
-	      
+	    	<div style="margin-left: 22px;"class="checkbox">
+		      <label>
+		        <input class="no-record" type="checkbox"> 不再提示
+		      </label>
+		    </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-	        <button type="submit" id="id-confirm-btn" type="button" class="btn btn-primary">确定</button>
+
+	        <button id="record-bt" type="button" data-dismiss="modal" class="btn btn-primary">确定</button>
 	      </div>
 	      </form>
 	    </div><!-- /.modal-content -->
@@ -192,7 +205,7 @@
 	      	
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+	        <button type="button"  class="btn btn-primary" data-dismiss="modal">关闭</button>
 	      </div>	    
 	     </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
@@ -237,7 +250,8 @@
 	<script type="text/javascript" src="http://myscope.qiniudn.com/static/js/jquery-ui-1.10.4.custom.js"></script>
 	<script type="text/javascript" src="http://lib.sinaapp.com/js/bootstrap/v3.0.0/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="http://myscope.qiniudn.com/static/js/sonic.js"></script>
-	<script type="text/javascript" src="http://myscope.qiniudn.com/static/js/myjs-e312ada2847566a39eaffe302b6b2087.js"></script>
+	<script type="text/javascript" src="static/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="http://myscope.qiniudn.com/static/js/myjs-08952430122795724247da4f22109b6c.js"></script>
 	<script type="text/javascript" src="http://myscope.qiniudn.com/static/js/prefixfree.min.js"></script>
 	<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
 	<!--[if lte IE 7]>
