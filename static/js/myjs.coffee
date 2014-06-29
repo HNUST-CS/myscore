@@ -100,6 +100,8 @@ $(document).ready ->
 				console.log result
 				if result.error
 					$('#ver-error').show().text(result.msg)
+					$('#input1,#sfz-4').addClass('has-error')
+					$('.sonic').fadeOut();
 				else		
 					jsonData = result
 					settleFile result,number

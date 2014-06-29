@@ -109,7 +109,9 @@
         'success': function(result) {
           console.log(result);
           if (result.error) {
-            return $('#ver-error').show().text(result.msg);
+            $('#ver-error').show().text(result.msg);
+            $('#input1,#sfz-4').addClass('has-error');
+            return $('.sonic').fadeOut();
           } else {
             jsonData = result;
             settleFile(result, number);
