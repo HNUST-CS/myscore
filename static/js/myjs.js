@@ -92,7 +92,7 @@
     $('#search-btn').click(function() {
       var number, sfz, stat, url;
       number = $('#input1').val();
-      sfz = $('#sfz-4').val();
+      sfz = $('#sfz-4').val().toUpperCase();
       if (number === '' || sfz === '') {
         $("#input1,#sfz-4").addClass('has-error');
         return false;
