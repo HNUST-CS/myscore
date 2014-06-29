@@ -6,4 +6,4 @@
 /db
 *.pyc
 /server/*.log
-/server/yzm/template/*
+#/server/yzm/template/*

@@ -26,7 +26,7 @@ def get_student_info(id,name,idcard):
     try: opener.get(base_url)
     except: return {'error':True,'msg':"7.服务器网络故障，可能查询的人太多了，亲再等等"}
 
-    for i in range(3):
+    for i in range(5):
         try: img = opener.get(url_img).content
         except : continue
         code = ocr.recognize(img)
