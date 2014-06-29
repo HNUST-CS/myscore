@@ -113,30 +113,3 @@ background-color: rgba(128, 128, 128, 0.49);
 height: 100%;
 width: 100%;
 }
-.sorry{
-	position: absolute;
-	height: 100%;
-	width: 100%;
-	background: #272822;
-	color:white;
-	text-align: center;
-}
-.say{
-	position: fixed;
-	bottom: 50%;
-}
-.centerPhoto{
-	position: absolute;
-	width: 100%;
-	height: 49%;
-	z-index: 0;
-	margin: auto;
-	background-image: url(http://myscope.qiniudn.com/static/images/goodbye.png);
-	background-repeat: no-repeat;
-	background-position: center;
-}
-.s-foot{
-	position: absolute;
-	width: 100%;
-	bottom: 20px;
-}

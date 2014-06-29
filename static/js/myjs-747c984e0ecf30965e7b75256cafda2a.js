@@ -13,7 +13,7 @@
   });
 
   $(document).ready(function() {
-    var addcolors, change, checkFailCourse, circle, clear, cnt, doc, init, jsonData, max, pwidth, setPosition, settleClassFile, settleFile, settleProgress, waveloop1, waveloop2;
+    var checkFailCourse, circle, clear, init, jsonData, pwidth, setPosition, settleClassFile, settleFile, settleProgress, waveloop1, waveloop2;
     jsonData = '';
     checkFailCourse = function() {
       return $('.score-table').find('tr').each(function() {
@@ -250,25 +250,11 @@
       return $(this).removeClass('has-error');
     });
     $('#feedback-bt').click(function() {});
-    $('#share-btn').click(function() {
+    return $('#share-btn').click(function() {
       return $(this).fadeOut('fast', function() {
         return $('#ckepop').fadeIn('fast');
       });
     });
-    addcolors = ['#0c84b0', '#5ab39d', '#fdc32b', '#272822', '#3f4564', '#f69448', '#336699'];
-    doc = ['本站本来是我们突发奇想一个通宵做出来的小玩具', '没想到上线之后得到了这么多同学的支持', '很高兴本站能够带给同学们一点点的便捷', '看到同学们相继转发，评论，支持，我们真的非常感动', '所以尽管在期末到处是考试的情况下我们还是尽全力去维护', '每天1W,2W上涨的访问量更是给与我们了无限的动力', '由于撸主是大二学生，顶不住学校给"恐吓"和压力', '迫于无奈之举，今天正式关闭本网站', '不过，结束就是下一个开始', '未来我们肯定努力去做出更多更好玩的东西带给大家来分享。', '不管怎样最后还是要说一句', '-----谢谢！-----', 'PS：不过我们还是迫使教务处封堵了一个很严重的漏洞，也算是做了一件好事', 'PS-2：其实他们这样从技术上还是挡不住我们的，不过。。。', '-----END-----'];
-    cnt = -1;
-    max = doc.length;
-    change = function() {
-      cnt++;
-      $('#sor-text').fadeOut('fast', function() {
-        return $(this).text(doc[cnt % max]);
-      }).fadeIn('slow');
-      return $('.sorry').animate({
-        backgroundColor: addcolors[(cnt - 1) % 7]
-      });
-    };
-    return setInterval(change, 4000);
   });
 
 }).call(this);

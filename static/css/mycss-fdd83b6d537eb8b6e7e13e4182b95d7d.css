@@ -131,7 +131,7 @@ width: 100%;
 	height: 49%;
 	z-index: 0;
 	margin: auto;
-	background-image: url(http://myscope.qiniudn.com/static/images/goodbye.png);
+	background-image: url(/myscore/static/images/goodbye.png);
 	background-repeat: no-repeat;
 	background-position: center;
 }
