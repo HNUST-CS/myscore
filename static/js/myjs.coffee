@@ -62,7 +62,7 @@ $(document).ready ->
 			cnt++;
 			j++
 		$('#0').mousedown()
-		$('#p-score tr').not('.'+ 0).hide();
+		$('#p-score tr').not('.'+ 0).hide()
 		checkFailCourse()
 	#清除旧数据
 	clear = ->
@@ -70,6 +70,8 @@ $(document).ready ->
 		$('#switch').empty();
 		$('#p-msg').find('tr').eq(1).find('td').empty();
 		$('#class-ct').empty();
+		$('#input1,#sfz-4').removeClass('has-error')
+		$('#ver-error').fadeOut('fast')
 
 	#设定加载动画位置
 	setPosition = ->
@@ -86,7 +88,6 @@ $(document).ready ->
 		$(circle.canvas).appendTo('#score-search-box').fadeIn()
 		setPosition()
 
-		$('#input1,#sfz-4').removeClass('has-error')
 		#$('#class_score').attr('disabled','disabled')
 		clear()
 		stat = 0
@@ -96,14 +97,19 @@ $(document).ready ->
 			'url':url
 			'dataType':'json'
 			'success':(result) ->
-				jsonData = result
-				settleFile result,number
-				$('.jumbotron').slideUp()
-				$('.verif').slideUp()
-				$('.score-show-box').fadeIn()
-				$('#class_score').attr('disabled',false)
-				$('.sonic').fadeOut();
+				console.log result
+				if result.error
+					$('#ver-error').show().text(result.msg)
+				else		
+					jsonData = result
+					settleFile result,number
+					$('.jumbotron').slideUp()
+					$('.verif').slideUp()
+					$('.score-show-box').fadeIn()
+					$('#class_score').attr('disabled',false)
+					$('.sonic').fadeOut();
 			'error':(a,b,c)->
+				$('#ver-error').show().text("与服务器连接错误")
 				$('#input1,#sfz-4').addClass('has-error')
 				$('.sonic').fadeOut();
 
@@ -240,6 +246,7 @@ $(document).ready ->
 	###
 
 	$('input').keydown ->
+		$('#ver-error').fadeOut('fast')
 		$(this).removeClass('has-error')
 
 

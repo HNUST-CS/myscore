@@ -80,7 +80,9 @@
       $('#p-score').empty();
       $('#switch').empty();
       $('#p-msg').find('tr').eq(1).find('td').empty();
-      return $('#class-ct').empty();
+      $('#class-ct').empty();
+      $('#input1,#sfz-4').removeClass('has-error');
+      return $('#ver-error').fadeOut('fast');
     };
     setPosition = function() {
       var outWidth;
@@ -97,7 +99,6 @@
       }
       $(circle.canvas).appendTo('#score-search-box').fadeIn();
       setPosition();
-      $('#input1,#sfz-4').removeClass('has-error');
       clear();
       stat = 0;
       url = dynamicWebService + '/api/score/' + number + '/' + sfz;
@@ -106,15 +107,21 @@
         'url': url,
         'dataType': 'json',
         'success': function(result) {
-          jsonData = result;
-          settleFile(result, number);
-          $('.jumbotron').slideUp();
-          $('.verif').slideUp();
-          $('.score-show-box').fadeIn();
-          $('#class_score').attr('disabled', false);
-          return $('.sonic').fadeOut();
+          console.log(result);
+          if (result.error) {
+            return $('#ver-error').show().text(result.msg);
+          } else {
+            jsonData = result;
+            settleFile(result, number);
+            $('.jumbotron').slideUp();
+            $('.verif').slideUp();
+            $('.score-show-box').fadeIn();
+            $('#class_score').attr('disabled', false);
+            return $('.sonic').fadeOut();
+          }
         },
         'error': function(a, b, c) {
+          $('#ver-error').show().text("与服务器连接错误");
           $('#input1,#sfz-4').addClass('has-error');
           return $('.sonic').fadeOut();
         }
@@ -247,6 +254,7 @@
     		return false;
      */
     $('input').keydown(function() {
+      $('#ver-error').fadeOut('fast');
       return $(this).removeClass('has-error');
     });
     $('#feedback-bt').click(function() {});
