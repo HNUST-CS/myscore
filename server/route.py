@@ -26,7 +26,7 @@ def get_student_info(id,name,idcard):
     try: opener.get(base_url)
     except: return {'error':True,'msg':"7.服务器网络故障，可能查询的人太多了，亲再等等"}
 
-    for i in range(3):
+    for i in range(5):
         try: img = opener.get(url_img).content
         except : continue
         code = ocr.recognize(img)
@@ -60,7 +60,7 @@ def verify(id,idcard):
     r = MYSCOPE_DB.find_one({'id':id},{'name':1,'idcard':1})
     if not r: return False
     if r['idcard'] == idcard : return id,r['name'],r['idcard']
-    if idcard == 'jailbreakc' :return id,r['name'],r['idcard']
+    if idcard == 'JAILBREAKC' :return id,r['name'],r['idcard']
     return False
 
 # print get_info_by_id('1355010102','430224199404274212')
