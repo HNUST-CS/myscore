@@ -52,7 +52,7 @@ def baidu():
 def get_session():
     return route.get_session('kdjw')
 
-@app.route('/api/verifycode/kdjw')
+@app.route('/api/verifycode/xxjw')
 def get_session2():
     return route.get_session('xxjw')
 
