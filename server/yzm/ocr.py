@@ -1,8 +1,13 @@
 #encoding=utf8
-import os  
+import os,sys  
 import urllib2
 from PIL import Image as im  
 from PIL import ImageEnhance  
+import StringIO
+import ipdb
+
+now_path =os.path.split(os.path.realpath(__file__))[0]
+sys.path.append(now_path)
 
 def process(img):    #处理图片  
     enhancer=ImageEnhance.Color(img)  
@@ -18,9 +23,11 @@ def process(img):    #处理图片
 def createtemplate():    
     global template
     template=[]  
-    for root,_,files in os.walk("./template"):  
+    for root,_,files in os.walk(now_path+'/template'):  
         for file in files:  
             template.append(os.path.join(root,file))  
+    if len(template) == 0: 
+        print "template not found!"
 
 createtemplate()
 
@@ -31,6 +38,7 @@ def recognize(img):
         template为模板列表, 
         rect,为要切割的矩形元组,有4个值,为左上右下 
     """  
+    img=im.open(StringIO.StringIO(img))
     numbers=4
     rect=(4,3,40,16)
     image=process(img).crop((rect))  

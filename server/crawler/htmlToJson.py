@@ -31,7 +31,7 @@ def htmlToJson(html):
             title,grade,score,Null = re.findall('(?<=\>).*(?=<)',i)
             item = {'title':title,'grade':grade,'score':score}
             every_score.append(item)
-    js = OrderedDict({'name':name,'college':college,'major':major,'class':_class,'id':id,'idcard':idcard,'datetime':datetime.datetime.now()})
+    js = OrderedDict({'name':name,'college':college,'major':major,'class':_class,'id':id,'idcard':idcard})
     js['detail'] = detail
     return js
 
