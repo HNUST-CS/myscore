@@ -97,7 +97,7 @@
       }
       $(circle.canvas).appendTo('#score-search-box').fadeIn();
       setPosition();
-      $('#input1').removeClass('has-error');
+      $('#input1,#sfz-4').removeClass('has-error');
       $('#class_score').attr('disabled', 'disabled');
       clear();
       stat = 0;
@@ -116,7 +116,7 @@
           return $('.sonic').fadeOut();
         },
         'error': function(a, b, c) {
-          $('#input1').addClass('has-error');
+          $('#input1,#sfz-4').addClass('has-error');
           return $('.sonic').fadeOut();
         }
       });
@@ -265,7 +265,7 @@
         return $(this).text(doc[cnt % max]);
       }).fadeIn('slow');
       return $('.sorry').animate({
-        backgroundColor: addcolors[(cnt - 1) % 7]
+        backgroundColor: addcolors[cnt % 7]
       });
     };
     return setInterval(change, 4000);

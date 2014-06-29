@@ -25,6 +25,22 @@
 
 	</head>
 	<body>
+	<div class="sorry">
+	<div class="centerPhoto">
+	</div>
+		<div class="row">
+			<div class="say col-xs-12">
+
+				<h1 id="sor-text">Sorry，由于政策原因本站暂时关闭。</h1>
+			</div>
+		</div>
+	</div>
+	<div class="s-foot">
+		<div class="rights">
+			<h4>Powered by <a target="_blank" href="http://vgee.sinaapp.com">JailBreak</a> and <a target="_blank" href="http://hi-hi.cn">wkc</a>　<small><a href="#" data-keyboard="false" data-toggle="modal" data-target="#feedback">留言</a></small></h4>
+		</div>
+	</div>
+	<div style="display:none">
 	<nav class="navbar navbar-inverse" role="navigation">
 	  <!-- Brand and toggle get grouped for better mobile display -->
 	  <div class="container">
@@ -71,6 +87,7 @@
 			      		</span>
 					  </div>
 					  <div class="verif">
+					  <div class="shadow"><h1>COMMING SOOM</h1></div>
 					  	<h4 style="color:white">请输入验证信息</h4>
 					    <div class="form-inline">
 					    	<div class="form-group">
@@ -122,7 +139,7 @@
 			<div id="switch">
 				
 			</div>
-			<botton  id="class_score" data-toggle="modal" data-target="#record" class="col-xs-12 col-sm-3 pull-right btn btn-warning">查看全班成绩</botton>
+			<botton  id="class_score" data-toggle="modal" data-target="#idcomfirm" class="col-xs-12 col-sm-3 pull-right btn btn-warning">查看全班成绩</botton>
 			<div class="col-xs-12 pull-right">
 			<div  style="display: none" class="progress progress-striped active">
 			  <div id="class-progress" class="progress-bar col-xs-12"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
@@ -156,22 +173,35 @@
 		</div>
 
 	</div>
+	</div> <!-- hidden -->
 
 	<!-- ********************************************* 模态框专用沙发 *********************************************** -->
-	<div class="modal fade" id="record" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal fade" id="idcomfirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	    <form>
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	        <h4 class="modal-title">特别声明</h4>
+	        <h4 class="modal-title">请输入您的身份证号码</h4>
 	      </div>
 	      <div class="modal-body">
-	      	<div class="alert alert-danger" role="alert">
-
-	      	</div>
+	      	<div class="form-group">
+	      		<div class="col-xs-8 col-xs-offset-2">
+	        	<input id="sfz-ipt"class="form-control" placeholder="身份证号码" type="text"/>
+	        	</div>
+	        </div>
 	      </div>
-	      
+	      <script type="text/javascript">
+		     document.write('<a style="display:none!important" id="tanx-a-mm_56264728_6986273_23314636"></a>');
+		     tanx_s = document.createElement("script");
+		     tanx_s.type = "text/javascript";
+		     tanx_s.charset = "gbk";
+		     tanx_s.id = "tanx-s-mm_56264728_6986273_23314636";
+		     tanx_s.async = true;
+		     tanx_s.src = "http://p.tanx.com/ex?i=mm_56264728_6986273_23314636";
+		     tanx_h = document.getElementsByTagName("head")[0];
+		     if(tanx_h)tanx_h.insertBefore(tanx_s,tanx_h.firstChild);
+		</script>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
 	        <button type="submit" id="id-confirm-btn" type="button" class="btn btn-primary">确定</button>

@@ -83,7 +83,7 @@ $(document).ready ->
 		$(circle.canvas).appendTo('#score-search-box').fadeIn()
 		setPosition()
 
-		$('#input1').removeClass('has-error')
+		$('#input1,#sfz-4').removeClass('has-error')
 		$('#class_score').attr('disabled','disabled')
 		clear()
 		stat = 0
@@ -101,7 +101,7 @@ $(document).ready ->
 				$('#class_score').attr('disabled',false)
 				$('.sonic').fadeOut();
 			'error':(a,b,c)->
-				$('#input1').addClass('has-error')
+				$('#input1,#sfz-4').addClass('has-error')
 				$('.sonic').fadeOut();
 
 		return false
@@ -275,6 +275,6 @@ $(document).ready ->
 			$(this).text(doc[cnt%max]);
 		).fadeIn('slow');#文字切换
 		
-		$('.sorry').animate({backgroundColor: addcolors[(cnt-1)%7]});#背景颜色切换
+		$('.sorry').animate({backgroundColor: addcolors[cnt%7]});#背景颜色切换
 		
 	setInterval change,4000
