@@ -161,7 +161,7 @@ $(document).ready ->
 
 	$('#update-bt').click ->
 		$(circle.canvas).appendTo('#update-ct')
-		#$('#update-ct').load('static/update.html')
+		$('#update-ct').load('static/update.html')
 	#处理进度条
 	###
 	pwidth = 0
