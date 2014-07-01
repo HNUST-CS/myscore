@@ -3,9 +3,6 @@ dynamicWebService = '.'
 $('#input1').click ->
 	$('.verif').slideDown('fast')
 
-$('#update-bt').click ->
-	$('#update-ct').load('static/update.html')
-
 
 $(document).ready ->
 	jsonData = ''
@@ -103,6 +100,8 @@ $(document).ready ->
 					$('#input1,#sfz-4').addClass('has-error')
 					$('.sonic').fadeOut();
 				else		
+					$.cookie('number',number)
+					$.cookie('sfz',sfz);
 					jsonData = result
 					settleFile result,number
 					$('.jumbotron').slideUp()
@@ -159,6 +158,10 @@ $(document).ready ->
 	)
 	circle.play()
 
+
+	$('#update-bt').click ->
+		$(circle.canvas).appendTo('#update-ct')
+		#$('#update-ct').load('static/update.html')
 	#处理进度条
 	###
 	pwidth = 0
@@ -251,6 +254,8 @@ $(document).ready ->
 		$('#ver-error').fadeOut('fast')
 		$(this).removeClass('has-error')
 
+	$('input').click ->
+		$(this).select()
 
 
 	$('#feedback-bt').click ->
@@ -258,6 +263,7 @@ $(document).ready ->
 	$('#share-btn').click ->
 		$(this).fadeOut 'fast', ->
 			$('#ckepop').fadeIn 'fast'
+	###
 	addcolors = [
     '#0c84b0',
     '#5ab39d',
@@ -295,9 +301,13 @@ $(document).ready ->
 		$('.sorry').animate({backgroundColor: addcolors[cnt%7]});#背景颜色切换
 		
 	setInterval change,4000
-
+	###
 	if $.cookie('no-record') isnt 'true'
 		$('#record').modal('show')
+
+	if $.cookie('number') and $.cookie('sfz')
+		$('#input1').val( $.cookie('number') )
+		$('#sfz-4').val( $.cookie('sfz') )
 
 	$('#record-bt').click ->
 		if document.getElementsByClassName('no-record')[0].checked is true
