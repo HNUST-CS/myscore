@@ -82,7 +82,9 @@ $(document).ready ->
 		if number is '' or sfz is ''
 			$("#input1,#sfz-4").addClass('has-error')
 			return false
-		$(circle.canvas).appendTo('#score-search-box').fadeIn()
+		if $('#mainp').css('display') is 'block'
+			return false
+		$(circle.canvas).attr('id','mainp').appendTo('#score-search-box').fadeIn()
 		setPosition()
 
 		#$('#class_score').attr('disabled','disabled')
