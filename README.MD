@@ -1,10 +1,14 @@
 湖南科技大学成绩查询
 =====
 这是一个基于教务网漏洞的成绩查询网站,开发时间约2014年6月,目前该项目已经废弃
-####请关注我们的微信号 查水表小分队
-![5](screenshoot/ewm.jpg)
 
-####技术提要:
+作者:[JailBreakC](https://github.com/JailBreakC) [wangkechun](https://github.com/wangkechun)
+####请关注我们的微信号 查水表小分队
+![二维码](screenshoot/ewm.jpg)
+
+![功能列表](screenshoot/menu.png)
+
+##技术提要:
 - 用财务网某漏洞获取到学生身份证号码,然后在教务网利用家长查询渠道获取成绩信息.
 - 用内网映射解决外网服务器无法访问教务网的问题
 - 内网映射基于 ssh反向隧道,花生壳,[net123](http://www.nat123.com/)
