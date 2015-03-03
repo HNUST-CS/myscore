@@ -1,5 +1,7 @@
 湖南科技大学成绩查询
 =====
+#####目前我正在寻找暑假实习，欢迎访问 [r.hi-hi.cn](http://r.hi-hi.cn) 查看我的简历
+
 这是一个基于教务网漏洞的成绩查询网站,开发时间约2014年6月,目前该项目已经废弃
 
 作者:[JailBreakC](https://github.com/JailBreakC) [wangkechun](https://github.com/wangkechun)
